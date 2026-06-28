@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BioMed Copilco — Catálogo en línea</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --azul:#1656C4; --azul-700:#0E3F94; --azul-900:#0A2A66;
+    --verde:#54B948; --verde-700:#3E9433; --teal:#0E9CA8; --naranja:#E07A1F;
+    --ink:#15202E; --slate:#586577; --slate-2:#8A97A6; --line:#E6EBF1;
+    --bg:#EEF2F7; --card:#fff;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--bg); font-family:'Manrope',system-ui,sans-serif; color:var(--ink); -webkit-font-smoothing:antialiased;}
+  .phone{max-width:480px; margin:0 auto; background:var(--card); min-height:100vh; box-shadow:0 0 60px rgba(16,32,58,.12); overflow:hidden;}
+  img{display:block; max-width:100%;}
+  a{text-decoration:none; color:inherit;}
+  h1,h2,h3{margin:0; letter-spacing:-.02em; line-height:1.12;}
+  .logo{font-weight:800; letter-spacing:-.03em;}
+  .logo .bio{color:var(--verde);} .logo .med{color:var(--azul);}
+
+  /* ===== header ===== */
+  .top{background:linear-gradient(160deg,#1656C4,#0A2A66); color:#fff; padding:32px 24px 26px; position:relative; overflow:hidden;}
+  .top .dots{position:absolute; inset:0; opacity:.45; background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.13) 1px,transparent 0); background-size:22px 22px;}
+  .top-in{position:relative; z-index:2;}
+  .top .logo{font-size:2.6rem;}
+  .top .logo .med{color:#fff;}
+  .top .tag{color:#CFE0FF; font-weight:500; margin-top:4px; font-size:.98rem;}
+  .eyebrow{display:inline-flex; align-items:center; gap:7px; font-size:.7rem; font-weight:800; letter-spacing:.13em; text-transform:uppercase; color:#A9C6FF; border:1px solid rgba(255,255,255,.3); padding:6px 13px; border-radius:999px; margin-bottom:16px;}
+  .eyebrow .pin{width:6px;height:6px;border-radius:50%;background:var(--verde);box-shadow:0 0 0 3px rgba(84,185,72,.25);}
+  .online-row{display:flex; gap:8px; flex-wrap:wrap; margin-top:18px;}
+  .online-row .pill{display:inline-flex; align-items:center; gap:7px; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.16); color:#EAF1FF; font-size:.78rem; font-weight:600; padding:7px 12px; border-radius:10px;}
+  .online-row .pill svg{width:14px;height:14px;}
+  .top-wa{display:flex; align-items:center; justify-content:center; gap:9px; background:var(--verde); color:#fff; font-weight:700; padding:15px; border-radius:14px; margin-top:18px; font-size:1.02rem; box-shadow:0 8px 22px rgba(62,148,51,.4);}
+  .top-wa:active{transform:scale(.98);}
+
+  /* ===== delivery banner ===== */
+  .deliv{display:flex; gap:13px; align-items:center; margin:0; padding:16px 22px; background:linear-gradient(90deg,#FFF6EC,#FFFBF6); border-bottom:1px solid var(--line);}
+  .deliv .ic{width:42px;height:42px;border-radius:12px;flex:none;display:flex;align-items:center;justify-content:center;background:var(--naranja);color:#fff;}
+  .deliv .ic svg{width:22px;height:22px;}
+  .deliv .t{font-weight:800; font-size:.96rem;}
+  .deliv .c{font-size:.81rem; color:var(--slate); margin-top:2px; line-height:1.35;}
+
+  /* ===== category nav (sticky) ===== */
+  .catnav{position:sticky; top:0; z-index:30; background:rgba(255,255,255,.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); display:flex; gap:8px; padding:11px 16px; overflow-x:auto; -webkit-overflow-scrolling:touch;}
+  .catnav::-webkit-scrollbar{display:none;}
+  .catnav a{flex:none; font-size:.83rem; font-weight:700; color:var(--slate); padding:8px 13px; border-radius:999px; border:1px solid var(--line); background:#fff; white-space:nowrap;}
+  .catnav a.on{background:var(--azul); color:#fff; border-color:var(--azul);}
+
+  /* ===== section ===== */
+  .group{padding:30px 20px 6px; scroll-margin-top:64px;}
+  .g-head{margin-bottom:18px;}
+  .g-kick{display:inline-flex; align-items:center; gap:8px; font-size:.72rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--azul-700);}
+  .g-kick .bar{width:20px;height:3px;border-radius:2px;background:var(--naranja);}
+  .g-head h2{font-size:1.42rem; margin-top:9px;}
+  .g-head .sub{font-size:.88rem; color:var(--slate); margin-top:6px; line-height:1.4;}
+  .g-count{display:inline-block; margin-top:9px; font-size:.74rem; font-weight:800; color:var(--slate-2); background:var(--bg); padding:4px 11px; border-radius:999px;}
+
+  /* ===== product grid ===== */
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:13px;}
+  .card{border:1px solid var(--line); border-radius:16px; overflow:hidden; background:var(--card); display:flex; flex-direction:column; transition:.16s; cursor:pointer;}
+  .card:active{transform:scale(.99);}
+  .card .expand{position:absolute; top:9px; right:9px; width:27px;height:27px;border-radius:8px; background:rgba(255,255,255,.92); box-shadow:0 1px 6px rgba(16,32,58,.16); display:flex;align-items:center;justify-content:center; color:var(--azul); pointer-events:none;}
+  .card .expand svg{width:14px;height:14px;}
+  .card .m{aspect-ratio:1/1; background:#fff; display:flex; align-items:center; justify-content:center; padding:12px; position:relative;}
+  .card .m img{width:100%;height:100%;object-fit:contain; mix-blend-mode:multiply;}
+  .card .ph{width:100%;height:100%;border-radius:11px;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;font-weight:700;font-size:.78rem;background:repeating-linear-gradient(135deg,#EEF4FB 0 10px,#E4EEFA 10px 20px);color:var(--azul-700);}
+  .badge{position:absolute; top:9px; left:9px; font-size:.6rem; font-weight:800; text-transform:uppercase; letter-spacing:.04em; color:#fff; padding:3px 8px; border-radius:999px;}
+  .badge.top{background:var(--naranja);} .badge.new{background:var(--verde-700);} .badge.rec{background:var(--teal);}
+  .card .b{padding:11px 13px 13px; display:flex; flex-direction:column; flex:1;}
+  .card .nm{font-size:.9rem; font-weight:700; line-height:1.22; text-wrap:pretty; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
+  .card .br{font-size:.7rem; color:var(--slate-2); margin-top:4px; font-weight:700; text-transform:uppercase; letter-spacing:.04em;}
+  .card .desc{font-size:.76rem; color:var(--slate); line-height:1.38; margin-top:6px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
+  .card .wa{margin-top:auto; display:flex; align-items:center; justify-content:center; gap:6px; background:#F0F8EF; color:var(--verde-700); border:1px solid #DCEFD9; font-weight:700; font-size:.8rem; padding:9px; border-radius:10px; margin-top:11px;}
+  .card .wa svg{width:14px;height:14px;}
+  .card .wa:active{background:#E4F4E1;}
+
+  /* ===== modal detalle ===== */
+  .modal{position:fixed; inset:0; z-index:100; display:none; align-items:flex-end; justify-content:center;}
+  .modal.open{display:flex;}
+  .modal-bg{position:absolute; inset:0; background:rgba(10,20,35,.55);}
+  .modal-card{position:relative; z-index:2; width:100%; max-width:480px; max-height:92vh; overflow-y:auto; background:#fff; border-radius:24px 24px 0 0; box-shadow:0 -12px 50px rgba(0,0,0,.32); animation:sheet .28s cubic-bezier(.2,.8,.2,1);}
+  @keyframes sheet{from{transform:translateY(46px);opacity:.5;}to{transform:none;opacity:1;}}
+  .modal-x{position:absolute; top:14px; right:14px; z-index:4; width:38px;height:38px;border-radius:50%; border:none; background:rgba(255,255,255,.92); box-shadow:0 2px 12px rgba(0,0,0,.18); display:flex;align-items:center;justify-content:center; cursor:pointer; color:var(--ink);}
+  .modal-hero{aspect-ratio:4/3; background:radial-gradient(120% 120% at 50% 18%,#F6F9FD,#E5ECF6); display:flex;align-items:center;justify-content:center; padding:28px; position:relative;}
+  .modal-hero img{max-width:90%; max-height:90%; object-fit:contain; mix-blend-mode:multiply;}
+  .modal-hero .ph{position:absolute; inset:24px; border-radius:14px; display:flex;align-items:center;justify-content:center; text-align:center; padding:14px; font-weight:700; background:repeating-linear-gradient(135deg,#EEF4FB 0 10px,#E4EEFA 10px 20px); color:var(--azul-700);}
+  .modal-b{padding:20px 22px 26px;}
+  .modal-b .br{font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.06em; color:var(--azul);}
+  .modal-b h3{font-size:1.42rem; margin-top:5px; line-height:1.15; text-wrap:pretty;}
+  .modal-sec{font-size:.68rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--slate-2); margin:18px 0 7px;}
+  .modal-b .desc{font-size:.96rem; color:var(--ink); line-height:1.5; opacity:.86;}
+  .sizes{display:flex; flex-wrap:wrap; gap:7px;}
+  .sizes .s{font-size:.78rem; font-weight:700; color:var(--ink); background:var(--bg); border:1px solid var(--line); padding:6px 12px; border-radius:9px;}
+  .modal-wa{display:flex;align-items:center;justify-content:center;gap:9px; background:var(--verde); color:#fff; font-weight:800; padding:15px; border-radius:14px; margin-top:22px; font-size:1.02rem; box-shadow:0 8px 22px rgba(62,148,51,.4);}
+  .modal-wa svg{width:20px;height:20px;}
+
+  /* ===== contact ===== */
+  .contact{margin:30px 18px 0; background:linear-gradient(160deg,#1656C4,#0A2A66); color:#fff; border-radius:22px; padding:26px 22px; position:relative; overflow:hidden;}
+  .contact .dots{position:absolute; inset:0; opacity:.4; background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.12) 1px,transparent 0); background-size:20px 20px;}
+  .contact-in{position:relative; z-index:2;}
+  .contact .kick{font-size:.72rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:#A9C6FF;}
+  .contact h2{font-size:1.34rem; margin-top:7px;}
+  .contact .lead{color:#CFE0FF; font-size:.9rem; margin-top:8px; line-height:1.45;}
+  .crow{display:flex; gap:12px; align-items:flex-start; padding:13px 0; border-bottom:1px solid rgba(255,255,255,.13);}
+  .crow:last-child{border-bottom:none;}
+  .crow .ci{width:38px;height:38px;border-radius:11px;background:rgba(255,255,255,.14);flex:none;display:flex;align-items:center;justify-content:center;}
+  .crow .ci svg{width:18px;height:18px;}
+  .crow .l{font-size:.66rem; text-transform:uppercase; letter-spacing:.08em; color:#9FBEF0; font-weight:800;}
+  .crow .v{font-weight:700; font-size:.93rem; margin-top:3px; line-height:1.35;}
+  .contact-wa{display:flex; align-items:center; justify-content:center; gap:9px; background:var(--verde); color:#fff; font-weight:800; padding:15px; border-radius:14px; margin-top:20px; font-size:1.02rem; box-shadow:0 8px 22px rgba(62,148,51,.4);}
+
+  .foot{text-align:center; padding:26px 22px 36px; color:var(--slate-2); font-size:.78rem; line-height:1.55;}
+</style>
+</head>
+<body>
+<template id="__bundler_thumbnail">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+    <rect width="240" height="240" fill="#1656C4"/>
+    <rect x="72" y="72" width="96" height="96" rx="20" fill="#fff"/>
+    <text x="120" y="138" font-family="Manrope, sans-serif" font-size="40" font-weight="800" text-anchor="middle" fill="#1656C4">B</text>
+    <circle cx="120" cy="120" r="92" fill="none" stroke="#54B948" stroke-width="6"/>
+  </svg>
+</template>
+<div class="phone">
+
+  <!-- HEADER -->
+  <div class="top">
+    <div class="dots"></div>
+    <div class="top-in">
+      <span class="eyebrow"><span class="pin"></span>Sucursal Copilco · Solo en línea</span>
+      <div class="logo"><span class="bio">Bio</span><span class="med">Med</span></div>
+      <div class="tag">Todo para el cuidado de la salud</div>
+      <div class="online-row">
+        <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>Tienda en línea</span>
+        <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Copilco el Bajo</span>
+        <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="15" height="11" rx="2"/><path d="M16 9h3l3 3v5h-6M5.5 20a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM18.5 20a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>Entrega local</span>
+      </div>
+      <a class="top-wa" target="_blank" rel="noopener" id="cta-top">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1112 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 01-1.9-1.2 7.2 7.2 0 01-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.8A11.8 11.8 0 0013 17c.6.3 1.1.4 1.5.5a3.5 3.5 0 001.6.1c.5-.1 1.4-.6 1.6-1.1s.2-1 .1-1.1-.2-.2-.4-.3z"/></svg>
+        Pedir por WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- DELIVERY -->
+  <div class="deliv">
+    <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="15" height="11" rx="2"/><path d="M16 9h3l3 3v5h-6M5.5 20a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM18.5 20a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg></div>
+    <div>
+      <div class="t">Entrega en Copilco el Bajo y alrededores</div>
+      <div class="c">Cobertura aprox. 1–2 km a la redonda. Consúltanos disponibilidad de envío a zonas cercanas.</div>
+    </div>
+  </div>
+
+  <!-- CATEGORY NAV -->
+  <div class="catnav" id="catnav"></div>
+
+  <!-- SECTIONS -->
+  <main id="groups"></main>
+
+  <!-- CONTACT -->
+  <div class="contact">
+    <div class="dots"></div>
+    <div class="contact-in">
+      <span class="kick">Haz tu pedido</span>
+      <h2>Estamos a un mensaje.</h2>
+      <p class="lead">Atención 100% en línea. Escríbenos por WhatsApp con el producto que te interesa y coordinamos entrega cerca de Copilco el Bajo.</p>
+      <div style="margin-top:14px">
+        <div class="crow"><div class="ci"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2z"/></svg></div><div><div class="l">WhatsApp · Pedidos</div><div class="v">951 302 4669</div></div></div>
+        <div class="crow"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="l">Zona de entrega</div><div class="v">Copilco el Bajo, Coyoacán · 1–2 km a la redonda</div></div></div>
+        <div class="crow"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div><div class="l">Horario de atención</div><div class="v">Lun–Vie 9:00–20:00 · Sáb 9:30–14:30</div></div></div>
+        <div class="crow"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor"/></svg></div><div><div class="l">Redes sociales</div><div class="v">IG @bio_med_21 · FB @biomedoax</div></div></div>
+      </div>
+      <a class="contact-wa" target="_blank" rel="noopener" id="cta-bottom">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1112 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 01-1.9-1.2 7.2 7.2 0 01-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.8A11.8 11.8 0 0013 17c.6.3 1.1.4 1.5.5a3.5 3.5 0 001.6.1c.5-.1 1.4-.6 1.6-1.1s.2-1 .1-1.1-.2-.2-.4-.3z"/></svg>
+        Escribir por WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <div class="foot">© 2025 BioMed · Sucursal Copilco el Bajo (en línea)<br>Catálogo informativo · Consulta disponibilidad y precios actuales.</div>
+</div>
+
+<!-- MODAL DETALLE -->
+<div class="modal" id="modal">
+  <div class="modal-bg"></div>
+  <div class="modal-card">
+    <button class="modal-x" id="modal-x" aria-label="Cerrar">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<script src="assets/copilco-data.js"></script>
+<script>
+(function(){
+  const D=window.COPILCO, $=s=>document.querySelector(s);
+  const phone='529513024669';
+  const esc=s=>(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const waLink=(txt)=>`https://wa.me/${phone}?text=${encodeURIComponent(txt)}`;
+  window.__phErr=function(img){const ph=document.createElement('div');ph.className='ph';ph.textContent=img.alt||'Producto';img.replaceWith(ph);};
+
+  // Acentos y correcciones de nombres para mostrar
+  const FIX=[['Baston','Bastón'],['Comodo','Cómodo'],['Colchon','Colchón'],['Electrica','Eléctrica'],['Plastico','Plástico'],['Portatil','Portátil'],['Acompanante','Acompañante'],['Bano','Baño'],['Rijos','Fijos'],['Anatomico','Anatómico'],['Aleman','Alemán'],['Cojin','Cojín'],['Parlisis','Parálisis']];
+  const norm=s=>{s=s||'';FIX.forEach(([a,b])=>{s=s.split(a).join(b);});return s;};
+
+  $('#cta-top').href=waLink('Hola BioMed Copilco, vi su catálogo en línea y quiero hacer un pedido.');
+  $('#cta-bottom').href=waLink('Hola BioMed Copilco, me interesa un producto de su catálogo.');
+
+  const badge=(tags)=>{
+    if(tags.includes('mas-vendido'))return '<span class="badge top">Top ventas</span>';
+    if(tags.includes('nuevo'))return '<span class="badge new">Nuevo</span>';
+    if(tags.includes('recomendado'))return '<span class="badge rec">Recomendado</span>';
+    return '';
+  };
+  const card=(p)=>{
+    const nm=norm(p.name);
+    const media=p.img?`<img src="${esc(p.img)}" alt="${esc(nm)}" loading="lazy" referrerpolicy="no-referrer" onerror="window.__phErr(this)">`
+      :`<div class="ph">${esc(nm)}</div>`;
+    const msg=`Hola BioMed Copilco, me interesa: ${nm}${p.brand?' ('+p.brand+')':''}. ¿Precio y disponibilidad?`;
+    const expand='<span class="expand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>';
+    return `<div class="card" data-id="${p.id}">
+      <div class="m">${badge(p.tags)}${expand}${media}</div>
+      <div class="b">
+        <div class="nm">${esc(nm)}</div>
+        ${p.brand?`<div class="br">${esc(p.brand)}</div>`:''}
+        <div class="desc">${esc(norm(p.desc))}</div>
+        <a class="wa" target="_blank" rel="noopener" href="${waLink(msg)}" onclick="event.stopPropagation()">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm4.4 12c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 01-1.9-1.2 7.2 7.2 0 01-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.8A11.8 11.8 0 0013 17c.6.3 1.1.4 1.5.5a3.5 3.5 0 001.6.1c.5-.1 1.4-.6 1.6-1.1s.2-1 .1-1.1z"/></svg>
+          Pedir
+        </a>
+      </div>
+    </div>`;
+  };
+
+  const nav=$('#catnav'), groups=$('#groups');
+  nav.innerHTML=D.groups.map((g,i)=>`<a href="#g-${g.key}" class="${i===0?'on':''}" data-k="${g.key}">${esc(g.nombre)}</a>`).join('');
+  groups.innerHTML=D.groups.map(g=>`
+    <section class="group" id="g-${g.key}">
+      <div class="g-head">
+        <span class="g-kick"><span class="bar"></span>${esc(g.nombre)}</span>
+        <h2>${esc(g.nombre)}</h2>
+        <div class="sub">${esc(g.sub)}</div>
+        <span class="g-count">${g.items.length} modelos</span>
+      </div>
+      <div class="grid2">${g.items.map(card).join('')}</div>
+    </section>`).join('');
+
+  // sticky nav active state
+  const links=[...nav.querySelectorAll('a')];
+  const obs=new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){
+      const k=e.target.id.replace('g-','');
+      links.forEach(a=>a.classList.toggle('on',a.dataset.k===k));
+    }});
+  },{rootMargin:'-45% 0px -50% 0px'});
+  D.groups.forEach(g=>obs.observe(document.getElementById('g-'+g.key)));
+
+  // ===== Modal de detalle (imagen grande + características) =====
+  const PMAP={}; D.groups.forEach(g=>g.items.forEach(p=>PMAP[p.id]=p));
+  const modal=$('#modal'), mc=$('#modal-content');
+  const waSvg='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1112 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 01-1.9-1.2 7.2 7.2 0 01-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.8A11.8 11.8 0 0013 17c.6.3 1.1.4 1.5.5a3.5 3.5 0 001.6.1c.5-.1 1.4-.6 1.6-1.1s.2-1 .1-1.1-.2-.2-.4-.3z"/></svg>';
+  function openModal(id){
+    const p=PMAP[id]; if(!p)return;
+    const nm=norm(p.name);
+    const media=p.img?`<img src="${esc(p.img)}" alt="${esc(nm)}" referrerpolicy="no-referrer" onerror="window.__phErr(this)">`:`<div class="ph">${esc(nm)}</div>`;
+    const msg=`Hola BioMed Copilco, me interesa: ${nm}${p.brand?' ('+p.brand+')':''}. ¿Precio y disponibilidad?`;
+    const sizes=(p.sizes&&p.sizes.length)?`<div class="modal-sec">Opciones disponibles</div><div class="sizes">${p.sizes.map(s=>`<span class="s">${esc(s)}</span>`).join('')}</div>`:'';
+    mc.innerHTML=`
+      <div class="modal-hero">${badge(p.tags)}${media}</div>
+      <div class="modal-b">
+        ${p.brand?`<div class="br">${esc(p.brand)}</div>`:''}
+        <h3>${esc(nm)}</h3>
+        <div class="modal-sec">Características</div>
+        <div class="desc">${esc(norm(p.desc)||'Consúltanos los detalles de este producto por WhatsApp.')}</div>
+        ${sizes}
+        <a class="modal-wa" target="_blank" rel="noopener" href="${waLink(msg)}">${waSvg}Pedir por WhatsApp</a>
+      </div>`;
+    modal.classList.add('open'); document.body.style.overflow='hidden'; mc.parentElement.scrollTop=0;
+  }
+  function closeModal(){ modal.classList.remove('open'); document.body.style.overflow=''; }
+  groups.addEventListener('click',e=>{ if(e.target.closest('.wa'))return; const c=e.target.closest('.card'); if(c)openModal(c.dataset.id); });
+  modal.querySelector('.modal-bg').addEventListener('click',closeModal);
+  $('#modal-x').addEventListener('click',closeModal);
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape')closeModal(); });
+})();
+</script>
+</body>
+</html>
