@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BioMed Copilco — Catálogo en línea</title>
+<title>BioMed — Catálogo en línea</title>
+<meta name="description" content="Catálogo BioMed: sillas de ruedas, auxiliares de movilidad, baño y seguridad, camas y equipo hospitalario. Pide por WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -16,105 +17,161 @@
   }
   *{box-sizing:border-box;}
   body{margin:0; background:var(--bg); font-family:'Manrope',system-ui,sans-serif; color:var(--ink); -webkit-font-smoothing:antialiased;}
-  .phone{max-width:480px; margin:0 auto; background:var(--card); min-height:100vh; box-shadow:0 0 60px rgba(16,32,58,.12); overflow:hidden;}
   img{display:block; max-width:100%;}
   a{text-decoration:none; color:inherit;}
   h1,h2,h3{margin:0; letter-spacing:-.02em; line-height:1.12;}
   .logo{font-weight:800; letter-spacing:-.03em;}
   .logo .bio{color:var(--verde);} .logo .med{color:var(--azul);}
+  .wrap{max-width:1240px; margin:0 auto; padding:0 20px;}
 
-  /* ===== header ===== */
-  .top{background:linear-gradient(160deg,#1656C4,#0A2A66); color:#fff; padding:32px 24px 26px; position:relative; overflow:hidden;}
+  /* ===== header / hero ===== */
+  .top{background:linear-gradient(160deg,#1656C4,#0A2A66); color:#fff; position:relative; overflow:hidden;}
   .top .dots{position:absolute; inset:0; opacity:.45; background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.13) 1px,transparent 0); background-size:22px 22px;}
-  .top-in{position:relative; z-index:2;}
-  .top .logo{font-size:2.6rem;}
+  .top-in{position:relative; z-index:2; padding:34px 0 30px;}
+  .top .logo{font-size:2.8rem;}
   .top .logo .med{color:#fff;}
-  .top .tag{color:#CFE0FF; font-weight:500; margin-top:4px; font-size:.98rem;}
+  .top .tag{color:#CFE0FF; font-weight:500; margin-top:5px; font-size:1.02rem;}
   .eyebrow{display:inline-flex; align-items:center; gap:7px; font-size:.7rem; font-weight:800; letter-spacing:.13em; text-transform:uppercase; color:#A9C6FF; border:1px solid rgba(255,255,255,.3); padding:6px 13px; border-radius:999px; margin-bottom:16px;}
   .eyebrow .pin{width:6px;height:6px;border-radius:50%;background:var(--verde);box-shadow:0 0 0 3px rgba(84,185,72,.25);}
   .online-row{display:flex; gap:8px; flex-wrap:wrap; margin-top:18px;}
-  .online-row .pill{display:inline-flex; align-items:center; gap:7px; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.16); color:#EAF1FF; font-size:.78rem; font-weight:600; padding:7px 12px; border-radius:10px;}
-  .online-row .pill svg{width:14px;height:14px;}
-  .top-wa{display:flex; align-items:center; justify-content:center; gap:9px; background:var(--verde); color:#fff; font-weight:700; padding:15px; border-radius:14px; margin-top:18px; font-size:1.02rem; box-shadow:0 8px 22px rgba(62,148,51,.4);}
+  .online-row .pill{display:inline-flex; align-items:center; gap:7px; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.16); color:#EAF1FF; font-size:.82rem; font-weight:600; padding:7px 12px; border-radius:10px;}
+  .online-row .pill svg{width:15px;height:15px;}
+  .top-wa{display:inline-flex; align-items:center; justify-content:center; gap:9px; background:var(--verde); color:#fff; font-weight:700; padding:14px 22px; border-radius:14px; margin-top:20px; font-size:1.02rem; box-shadow:0 8px 22px rgba(62,148,51,.4); transition:.16s;}
+  .top-wa:hover{background:var(--verde-700);}
   .top-wa:active{transform:scale(.98);}
 
   /* ===== delivery banner ===== */
-  .deliv{display:flex; gap:13px; align-items:center; margin:0; padding:16px 22px; background:linear-gradient(90deg,#FFF6EC,#FFFBF6); border-bottom:1px solid var(--line);}
+  .deliv-band{background:linear-gradient(90deg,#FFF6EC,#FFFBF6); border-bottom:1px solid var(--line);}
+  .deliv{display:flex; gap:13px; align-items:center; padding:15px 0;}
   .deliv .ic{width:42px;height:42px;border-radius:12px;flex:none;display:flex;align-items:center;justify-content:center;background:var(--naranja);color:#fff;}
   .deliv .ic svg{width:22px;height:22px;}
   .deliv .t{font-weight:800; font-size:.96rem;}
-  .deliv .c{font-size:.81rem; color:var(--slate); margin-top:2px; line-height:1.35;}
+  .deliv .c{font-size:.83rem; color:var(--slate); margin-top:2px; line-height:1.35;}
 
-  /* ===== category nav (sticky) ===== */
-  .catnav{position:sticky; top:0; z-index:30; background:rgba(255,255,255,.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); display:flex; gap:8px; padding:11px 16px; overflow-x:auto; -webkit-overflow-scrolling:touch;}
-  .catnav::-webkit-scrollbar{display:none;}
-  .catnav a{flex:none; font-size:.83rem; font-weight:700; color:var(--slate); padding:8px 13px; border-radius:999px; border:1px solid var(--line); background:#fff; white-space:nowrap;}
-  .catnav a.on{background:var(--azul); color:#fff; border-color:var(--azul);}
+  /* ===== sticky filter toolbar ===== */
+  .toolbar{position:sticky; top:0; z-index:30; background:rgba(255,255,255,.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  .toolbar-in{display:flex; align-items:center; gap:14px; padding:12px 0;}
+  .chips{display:flex; gap:8px; overflow-x:auto; -webkit-overflow-scrolling:touch; flex:1; scrollbar-width:none;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{flex:none; font-size:.86rem; font-weight:700; color:var(--slate); padding:9px 15px; border-radius:999px; border:1px solid var(--line); background:#fff; white-space:nowrap; cursor:pointer; transition:.14s;}
+  .chip:hover{border-color:var(--azul); color:var(--azul);}
+  .chip.on{background:var(--azul); color:#fff; border-color:var(--azul);}
+  .iva-note{flex:none; font-size:.76rem; font-weight:600; color:var(--slate-2); white-space:nowrap;}
+  @media(max-width:720px){ .iva-note{display:none;} }
 
-  /* ===== section ===== */
-  .group{padding:30px 20px 6px; scroll-margin-top:64px;}
+  /* ===== sections ===== */
+  main{padding-bottom:8px;}
+  .group{padding:30px 0 6px;}
+  .group.hidden{display:none;}
   .g-head{margin-bottom:18px;}
   .g-kick{display:inline-flex; align-items:center; gap:8px; font-size:.72rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--azul-700);}
   .g-kick .bar{width:20px;height:3px;border-radius:2px;background:var(--naranja);}
-  .g-head h2{font-size:1.42rem; margin-top:9px;}
-  .g-head .sub{font-size:.88rem; color:var(--slate); margin-top:6px; line-height:1.4;}
-  .g-count{display:inline-block; margin-top:9px; font-size:.74rem; font-weight:800; color:var(--slate-2); background:var(--bg); padding:4px 11px; border-radius:999px;}
+  .g-head h2{font-size:1.6rem; margin-top:9px;}
+  .g-head .sub{font-size:.92rem; color:var(--slate); margin-top:6px; line-height:1.4; max-width:640px;}
+  .g-count{display:inline-block; margin-top:10px; font-size:.74rem; font-weight:800; color:var(--slate-2); background:var(--bg); padding:4px 11px; border-radius:999px;}
 
   /* ===== product grid ===== */
-  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:13px;}
+  .grid{display:grid; grid-template-columns:repeat(2,1fr); gap:13px;}
+  @media(min-width:560px){ .grid{grid-template-columns:repeat(3,1fr); gap:15px;} }
+  @media(min-width:820px){ .grid{grid-template-columns:repeat(4,1fr); gap:18px;} }
+  @media(min-width:1120px){ .grid{grid-template-columns:repeat(5,1fr);} }
   .card{border:1px solid var(--line); border-radius:16px; overflow:hidden; background:var(--card); display:flex; flex-direction:column; transition:.16s; cursor:pointer;}
+  .card:hover{box-shadow:0 10px 28px rgba(16,32,58,.12); transform:translateY(-2px); border-color:#D4DEEC;}
   .card:active{transform:scale(.99);}
-  .card .expand{position:absolute; top:9px; right:9px; width:27px;height:27px;border-radius:8px; background:rgba(255,255,255,.92); box-shadow:0 1px 6px rgba(16,32,58,.16); display:flex;align-items:center;justify-content:center; color:var(--azul); pointer-events:none;}
+  .card .expand{position:absolute; top:9px; right:9px; width:28px;height:28px;border-radius:8px; background:rgba(255,255,255,.92); box-shadow:0 1px 6px rgba(16,32,58,.16); display:flex;align-items:center;justify-content:center; color:var(--azul); pointer-events:none;}
   .card .expand svg{width:14px;height:14px;}
-  .card .m{aspect-ratio:1/1; background:#fff; display:flex; align-items:center; justify-content:center; padding:12px; position:relative;}
-  .card .m img{width:100%;height:100%;object-fit:contain; mix-blend-mode:multiply;}
+  .card .m{height:200px; background:#fff; display:flex; align-items:center; justify-content:center; padding:12px; position:relative;}
+  .card .m img{max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; mix-blend-mode:multiply;}
   .card .ph{width:100%;height:100%;border-radius:11px;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;font-weight:700;font-size:.78rem;background:repeating-linear-gradient(135deg,#EEF4FB 0 10px,#E4EEFA 10px 20px);color:var(--azul-700);}
   .badge{position:absolute; top:9px; left:9px; font-size:.6rem; font-weight:800; text-transform:uppercase; letter-spacing:.04em; color:#fff; padding:3px 8px; border-radius:999px;}
   .badge.top{background:var(--naranja);} .badge.new{background:var(--verde-700);} .badge.rec{background:var(--teal);}
-  .card .b{padding:11px 13px 13px; display:flex; flex-direction:column; flex:1;}
-  .card .nm{font-size:.9rem; font-weight:700; line-height:1.22; text-wrap:pretty; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
-  .card .br{font-size:.7rem; color:var(--slate-2); margin-top:4px; font-weight:700; text-transform:uppercase; letter-spacing:.04em;}
-  .card .desc{font-size:.76rem; color:var(--slate); line-height:1.38; margin-top:6px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
-  .card .wa{margin-top:auto; display:flex; align-items:center; justify-content:center; gap:6px; background:#F0F8EF; color:var(--verde-700); border:1px solid #DCEFD9; font-weight:700; font-size:.8rem; padding:9px; border-radius:10px; margin-top:11px;}
-  .card .wa svg{width:14px;height:14px;}
-  .card .wa:active{background:#E4F4E1;}
+  .card .b{padding:13px 14px 14px; display:flex; flex-direction:column; flex:1; gap:7px;}
+  .card .nm{font-size:.95rem; font-weight:700; line-height:1.24; text-wrap:pretty;}
+  .card .sku{font-family:'Courier New',monospace; font-size:.68rem; font-weight:700; color:var(--azul); background:#EAF1FC; padding:3px 8px; border-radius:6px; align-self:flex-start; letter-spacing:.02em;}
+  .card .feats{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:3px;}
+  .card .feats li{font-size:.76rem; color:var(--slate); line-height:1.32; display:flex; gap:6px; align-items:baseline;}
+  .card .feats li::before{content:"\2713"; color:var(--verde-700); font-weight:800; font-size:.7rem; flex:none;}
+  .card .colorrow{display:flex; align-items:center; gap:7px; padding-top:9px; border-top:1px solid var(--line); flex-wrap:wrap;}
+  .card .colorrow .lbl{font-size:.64rem; text-transform:uppercase; letter-spacing:.06em; color:var(--slate-2); font-weight:800;}
+  .card .sw{width:18px;height:18px;border-radius:50%; border:2px solid #fff; box-shadow:0 0 0 1px var(--line),0 1px 3px rgba(0,0,0,.2);}
+  .card .swatches{display:flex; gap:6px; align-items:center;}
+  .card .sw-btn{width:20px;height:20px;border-radius:50%; border:2px solid #fff; box-shadow:0 0 0 1px var(--line),0 1px 3px rgba(0,0,0,.2); cursor:pointer; padding:0; transition:transform .12s;}
+  .card .sw-btn:hover{transform:scale(1.18);}
+  .card .sw-btn.on{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--azul);}
+  .card .cname{text-transform:none; color:var(--slate); font-weight:600;}
+  .card .sizechip{font-size:.7rem; font-weight:700; color:var(--ink); background:var(--bg); border:1px solid var(--line); padding:3px 9px; border-radius:7px;}
+  .card .price{font-size:1.22rem; font-weight:800; color:var(--azul-900); letter-spacing:-.02em;}
+  .card .price .iva{font-size:.62rem; font-weight:700; color:var(--slate-2); text-transform:uppercase; letter-spacing:.04em; margin-left:5px;}
+  .card .price.consult{font-size:.92rem; font-weight:700; color:var(--slate);}
+  .card .wa{display:flex; align-items:center; justify-content:center; gap:6px; background:#F0F8EF; color:var(--verde-700); border:1px solid #DCEFD9; font-weight:700; font-size:.82rem; padding:10px; border-radius:10px; transition:.14s; margin-top:7px;}
+  .card .wa svg{width:15px;height:15px;}
+  .card .wa:hover{background:#E4F4E1;}
+  .card .pricewrap{margin-top:auto; padding-top:4px;}
 
   /* ===== modal detalle ===== */
   .modal{position:fixed; inset:0; z-index:100; display:none; align-items:flex-end; justify-content:center;}
   .modal.open{display:flex;}
   .modal-bg{position:absolute; inset:0; background:rgba(10,20,35,.55);}
-  .modal-card{position:relative; z-index:2; width:100%; max-width:480px; max-height:92vh; overflow-y:auto; background:#fff; border-radius:24px 24px 0 0; box-shadow:0 -12px 50px rgba(0,0,0,.32); animation:sheet .28s cubic-bezier(.2,.8,.2,1);}
+  .modal-card{position:relative; z-index:2; width:100%; max-width:520px; max-height:92vh; overflow-y:auto; background:#fff; border-radius:24px 24px 0 0; box-shadow:0 -12px 50px rgba(0,0,0,.32); animation:sheet .28s cubic-bezier(.2,.8,.2,1);}
   @keyframes sheet{from{transform:translateY(46px);opacity:.5;}to{transform:none;opacity:1;}}
+  @media(min-width:640px){
+    .modal{align-items:center;}
+    .modal-card{border-radius:22px; max-height:88vh; box-shadow:0 24px 70px rgba(0,0,0,.4);}
+    @keyframes sheet{from{transform:translateY(24px) scale(.98);opacity:0;}to{transform:none;opacity:1;}}
+  }
   .modal-x{position:absolute; top:14px; right:14px; z-index:4; width:38px;height:38px;border-radius:50%; border:none; background:rgba(255,255,255,.92); box-shadow:0 2px 12px rgba(0,0,0,.18); display:flex;align-items:center;justify-content:center; cursor:pointer; color:var(--ink);}
   .modal-hero{aspect-ratio:4/3; background:radial-gradient(120% 120% at 50% 18%,#F6F9FD,#E5ECF6); display:flex;align-items:center;justify-content:center; padding:28px; position:relative;}
   .modal-hero img{max-width:90%; max-height:90%; object-fit:contain; mix-blend-mode:multiply;}
   .modal-hero .ph{position:absolute; inset:24px; border-radius:14px; display:flex;align-items:center;justify-content:center; text-align:center; padding:14px; font-weight:700; background:repeating-linear-gradient(135deg,#EEF4FB 0 10px,#E4EEFA 10px 20px); color:var(--azul-700);}
-  .modal-b{padding:20px 22px 26px;}
+  .modal-b{padding:22px 24px 26px;}
   .modal-b .br{font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.06em; color:var(--azul);}
-  .modal-b h3{font-size:1.42rem; margin-top:5px; line-height:1.15; text-wrap:pretty;}
+  .modal-b h3{font-size:1.5rem; margin-top:5px; line-height:1.15; text-wrap:pretty;}
+  .modal-price{display:flex; align-items:baseline; gap:9px; margin-top:14px; padding:14px 16px; background:var(--bg); border-radius:14px;}
+  .modal-price .val{font-size:1.7rem; font-weight:800; color:var(--azul-900); letter-spacing:-.02em;}
+  .modal-price .iva{font-size:.74rem; font-weight:700; color:var(--slate); text-transform:uppercase; letter-spacing:.04em;}
+  .modal-price.consult .val{font-size:1.1rem; color:var(--slate);}
   .modal-sec{font-size:.68rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--slate-2); margin:18px 0 7px;}
   .modal-b .desc{font-size:.96rem; color:var(--ink); line-height:1.5; opacity:.86;}
   .sizes{display:flex; flex-wrap:wrap; gap:7px;}
-  .sizes .s{font-size:.78rem; font-weight:700; color:var(--ink); background:var(--bg); border:1px solid var(--line); padding:6px 12px; border-radius:9px;}
-  .modal-wa{display:flex;align-items:center;justify-content:center;gap:9px; background:var(--verde); color:#fff; font-weight:800; padding:15px; border-radius:14px; margin-top:22px; font-size:1.02rem; box-shadow:0 8px 22px rgba(62,148,51,.4);}
+  .sizes .s{font-size:.78rem; font-weight:700; color:var(--ink); background:var(--bg); border:1px solid var(--line); padding:6px 12px; border-radius:9px; display:inline-flex; align-items:center; gap:7px;}
+  .m-sw{width:15px;height:15px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px var(--line);}
+  .m-swatches{display:flex; gap:9px; flex-wrap:wrap; align-items:center;}
+  .m-sw-btn{width:30px;height:30px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px var(--line),0 1px 4px rgba(0,0,0,.22); cursor:pointer; padding:0; transition:transform .12s;}
+  .m-sw-btn:hover{transform:scale(1.12);}
+  .m-sw-btn.on{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--azul);}
+  .m-feats{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:6px;}
+  .m-feats li{font-size:.92rem; color:var(--ink); line-height:1.4; display:flex; gap:9px; align-items:baseline;}
+  .m-feats li::before{content:"\2713"; color:var(--verde-700); font-weight:800; font-size:.82rem; flex:none;}
+  .modal-wa{display:flex;align-items:center;justify-content:center;gap:9px; background:var(--verde); color:#fff; font-weight:800; padding:15px; border-radius:14px; margin-top:22px; font-size:1.02rem; box-shadow:0 8px 22px rgba(62,148,51,.4); transition:.16s;}
+  .modal-wa:hover{background:var(--verde-700);}
   .modal-wa svg{width:20px;height:20px;}
 
   /* ===== contact ===== */
-  .contact{margin:30px 18px 0; background:linear-gradient(160deg,#1656C4,#0A2A66); color:#fff; border-radius:22px; padding:26px 22px; position:relative; overflow:hidden;}
+  .contact-band{padding:34px 0 0;}
+  .contact{background:linear-gradient(160deg,#1656C4,#0A2A66); color:#fff; border-radius:22px; padding:30px 26px; position:relative; overflow:hidden;}
   .contact .dots{position:absolute; inset:0; opacity:.4; background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.12) 1px,transparent 0); background-size:20px 20px;}
   .contact-in{position:relative; z-index:2;}
   .contact .kick{font-size:.72rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:#A9C6FF;}
-  .contact h2{font-size:1.34rem; margin-top:7px;}
-  .contact .lead{color:#CFE0FF; font-size:.9rem; margin-top:8px; line-height:1.45;}
+  .contact h2{font-size:1.5rem; margin-top:7px;}
+  .contact .lead{color:#CFE0FF; font-size:.94rem; margin-top:8px; line-height:1.45; max-width:560px;}
+  .crows{margin-top:16px;}
+  @media(min-width:720px){ .crows{display:grid; grid-template-columns:1fr 1fr; gap:0 32px;} }
   .crow{display:flex; gap:12px; align-items:flex-start; padding:13px 0; border-bottom:1px solid rgba(255,255,255,.13);}
-  .crow:last-child{border-bottom:none;}
   .crow .ci{width:38px;height:38px;border-radius:11px;background:rgba(255,255,255,.14);flex:none;display:flex;align-items:center;justify-content:center;}
   .crow .ci svg{width:18px;height:18px;}
   .crow .l{font-size:.66rem; text-transform:uppercase; letter-spacing:.08em; color:#9FBEF0; font-weight:800;}
   .crow .v{font-weight:700; font-size:.93rem; margin-top:3px; line-height:1.35;}
-  .contact-wa{display:flex; align-items:center; justify-content:center; gap:9px; background:var(--verde); color:#fff; font-weight:800; padding:15px; border-radius:14px; margin-top:20px; font-size:1.02rem; box-shadow:0 8px 22px rgba(62,148,51,.4);}
+  .contact-wa{display:inline-flex; align-items:center; justify-content:center; gap:9px; background:var(--verde); color:#fff; font-weight:800; padding:15px 26px; border-radius:14px; margin-top:20px; font-size:1.02rem; box-shadow:0 8px 22px rgba(62,148,51,.4); transition:.16s;}
+  .contact-wa:hover{background:var(--verde-700);}
+  .contact-wa svg{width:20px;height:20px;}
 
-  .foot{text-align:center; padding:26px 22px 36px; color:var(--slate-2); font-size:.78rem; line-height:1.55;}
+  .foot{text-align:center; padding:26px 22px 40px; color:var(--slate-2); font-size:.8rem; line-height:1.6;}
+
+  /* floating WhatsApp button (mobile) */
+  .fab{position:fixed; right:16px; bottom:16px; z-index:60; width:58px;height:58px;border-radius:50%; background:var(--verde); color:#fff; display:flex;align-items:center;justify-content:center; box-shadow:0 8px 24px rgba(62,148,51,.5); transition:.16s;}
+  .fab:hover{background:var(--verde-700); transform:scale(1.05);}
+  .fab svg{width:30px;height:30px;}
+  @media(min-width:900px){ .fab{display:none;} }
 </style>
 </head>
 <body>
@@ -126,64 +183,76 @@
     <circle cx="120" cy="120" r="92" fill="none" stroke="#54B948" stroke-width="6"/>
   </svg>
 </template>
-<div class="phone">
 
-  <!-- HEADER -->
-  <div class="top">
-    <div class="dots"></div>
-    <div class="top-in">
-      <span class="eyebrow"><span class="pin"></span>Sucursal Copilco · Solo en línea</span>
-      <div class="logo"><span class="bio">Bio</span><span class="med">Med</span></div>
-      <div class="tag">Todo para el cuidado de la salud</div>
-      <div class="online-row">
-        <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>Tienda en línea</span>
-        <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Copilco el Bajo</span>
-        <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="15" height="11" rx="2"/><path d="M16 9h3l3 3v5h-6M5.5 20a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM18.5 20a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>Entrega local</span>
-      </div>
-      <a class="top-wa" target="_blank" rel="noopener" id="cta-top">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1112 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 01-1.9-1.2 7.2 7.2 0 01-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.8A11.8 11.8 0 0013 17c.6.3 1.1.4 1.5.5a3.5 3.5 0 001.6.1c.5-.1 1.4-.6 1.6-1.1s.2-1 .1-1.1-.2-.2-.4-.3z"/></svg>
-        Pedir por WhatsApp
-      </a>
+<!-- HEADER -->
+<header class="top">
+  <div class="dots"></div>
+  <div class="wrap top-in">
+    <span class="eyebrow"><span class="pin"></span>Catálogo en línea</span>
+    <div class="logo"><span class="bio">Bio</span><span class="med">Med</span></div>
+    <div class="tag">Equipo médico, ortopédico y de movilidad</div>
+    <div class="online-row">
+      <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>Tienda en línea</span>
+      <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="15" height="11" rx="2"/><path d="M16 9h3l3 3v5h-6M5.5 20a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM18.5 20a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>Envíos a domicilio</span>
+      <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 01-12 7.6L3 21l1.9-5.6A8.5 8.5 0 1121 11.5z"/></svg>Atención por WhatsApp</span>
     </div>
+    <a class="top-wa" target="_blank" rel="noopener" id="cta-top">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1112 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 01-1.9-1.2 7.2 7.2 0 01-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.8A11.8 11.8 0 0013 17c.6.3 1.1.4 1.5.5a3.5 3.5 0 001.6.1c.5-.1 1.4-.6 1.6-1.1s.2-1 .1-1.1-.2-.2-.4-.3z"/></svg>
+      Pedir por WhatsApp
+    </a>
   </div>
+</header>
 
-  <!-- DELIVERY -->
-  <div class="deliv">
+<!-- DELIVERY -->
+<div class="deliv-band">
+  <div class="wrap deliv">
     <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="15" height="11" rx="2"/><path d="M16 9h3l3 3v5h-6M5.5 20a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM18.5 20a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg></div>
     <div>
-      <div class="t">Entrega en Copilco el Bajo y alrededores</div>
-      <div class="c">Cobertura aprox. 1–2 km a la redonda. Consúltanos disponibilidad de envío a zonas cercanas.</div>
+      <div class="t">Envíos a domicilio y entrega local</div>
+      <div class="c">Escríbenos por WhatsApp para confirmar cobertura, tiempos y costo de envío a tu zona.</div>
     </div>
   </div>
+</div>
 
-  <!-- CATEGORY NAV -->
-  <div class="catnav" id="catnav"></div>
+<!-- FILTER TOOLBAR -->
+<div class="toolbar">
+  <div class="wrap toolbar-in">
+    <div class="chips" id="chips"></div>
+    <span class="iva-note">Precios con IVA incluido</span>
+  </div>
+</div>
 
-  <!-- SECTIONS -->
-  <main id="groups"></main>
+<!-- SECTIONS -->
+<main class="wrap" id="groups"></main>
 
-  <!-- CONTACT -->
+<!-- CONTACT -->
+<div class="wrap contact-band">
   <div class="contact">
     <div class="dots"></div>
     <div class="contact-in">
       <span class="kick">Haz tu pedido</span>
       <h2>Estamos a un mensaje.</h2>
-      <p class="lead">Atención 100% en línea. Escríbenos por WhatsApp con el producto que te interesa y coordinamos entrega cerca de Copilco el Bajo.</p>
-      <div style="margin-top:14px">
+      <p class="lead">Atención 100% en línea. Escríbenos por WhatsApp con el producto que te interesa y coordinamos tu pedido y entrega.</p>
+      <div class="crows">
         <div class="crow"><div class="ci"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2z"/></svg></div><div><div class="l">WhatsApp · Pedidos</div><div class="v">951 302 4669</div></div></div>
-        <div class="crow"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="l">Zona de entrega</div><div class="v">Copilco el Bajo, Coyoacán · 1–2 km a la redonda</div></div></div>
+        <div class="crow"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="15" height="11" rx="2"/><path d="M16 9h3l3 3v5h-6M5.5 20a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM18.5 20a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg></div><div><div class="l">Envíos</div><div class="v">A domicilio · Consúltanos cobertura por zona</div></div></div>
         <div class="crow"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div><div class="l">Horario de atención</div><div class="v">Lun–Vie 9:00–20:00 · Sáb 9:30–14:30</div></div></div>
         <div class="crow"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor"/></svg></div><div><div class="l">Redes sociales</div><div class="v">IG @bio_med_21 · FB @biomedoax</div></div></div>
       </div>
       <a class="contact-wa" target="_blank" rel="noopener" id="cta-bottom">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1112 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 01-1.9-1.2 7.2 7.2 0 01-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.8A11.8 11.8 0 0013 17c.6.3 1.1.4 1.5.5a3.5 3.5 0 001.6.1c.5-.1 1.4-.6 1.6-1.1s.2-1 .1-1.1-.2-.2-.4-.3z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1112 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 01-1.9-1.2 7.2 7.2 0 01-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.8A11.8 11.8 0 0013 17c.6.3 1.1.4 1.5.5a3.5 3.5 0 001.6.1c.5-.1 1.4-.6 1.6-1.1s.2-1 .1-1.1-.2-.2-.4-.3z"/></svg>
         Escribir por WhatsApp
       </a>
     </div>
   </div>
-
-  <div class="foot">© 2025 BioMed · Sucursal Copilco el Bajo (en línea)<br>Catálogo informativo · Consulta disponibilidad y precios actuales.</div>
 </div>
+
+<div class="foot">© 2025 BioMed · Catálogo informativo<br>Precios con IVA incluido. Sujetos a cambio sin previo aviso · Consulta disponibilidad actual.</div>
+
+<!-- FLOATING WHATSAPP -->
+<a class="fab" target="_blank" rel="noopener" id="fab" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1112 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 01-1.9-1.2 7.2 7.2 0 01-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.8A11.8 11.8 0 0013 17c.6.3 1.1.4 1.5.5a3.5 3.5 0 001.6.1c.5-.1 1.4-.6 1.6-1.1s.2-1 .1-1.1-.2-.2-.4-.3z"/></svg>
+</a>
 
 <!-- MODAL DETALLE -->
 <div class="modal" id="modal">
@@ -196,90 +265,172 @@
   </div>
 </div>
 
-<script src="assets/copilco-data.js"></script>
+<script>
+window.BIOMED={"groups":[{"key":"sillas","nombre":"Sillas de ruedas","sub":"Estándar, ligeras de aluminio, de traslado y especiales (PCI/PCA).","cats":["Sillas de ruedas"],"items":[{"id":"p163","name":"SE Movili Motion 18\"","brand":"Reactiv","cat":"Sillas de ruedas","img":"assets/opt/p163_SE_Movili_Motion_18.jpg","sizes":["GRIS"],"tags":[],"desc":"Silla de acero de la línea Movili con brazos fijos y elevapiernas abatibles y desmontables, que permiten elevar y extender las piernas. Recomendada cuando el paciente necesita mantener una pierna en alto por hinchazón (edema), fractura o postoperatorio. Tapicería de nylon, ruedas traseras de 24\" autoimpulsables y bolsa trasera. Soporta hasta 100 kg.","price":3340,"cost":2155.99,"qty":1,"sku":"R218017PV-TN","features":["Acero línea Movili","Brazos fijos acojinados","Elevapiernas abatibles y desmontables","Ruedas 24\" autoimpulsables · 100 kg"],"swatch":{"name":"Gris","hex":"#7d8794"},"sizeLabel":null},{"id":"p164","name":"DA Movili Motion 18\"","brand":"Reactiv","cat":"Sillas de ruedas","img":"assets/opt/p164_DA_Movili_Motion_18.jpg","sizes":["GRIS"],"tags":[],"desc":"Silla de acero de la línea Movili con brazos abatibles tipo FlipUp (se levantan) y descansapiés desmontables. Los brazos abatibles facilitan pasar al paciente de la silla a la cama o al inodoro, por lo que es una buena elección para quien tiene cuidador. Tapicería de nylon transpirable y ruedas traseras de 24\". Soporta hasta 100 kg.","price":3570,"cost":2303.99,"qty":0,"sku":"R218020PV-TN","features":["Acero línea Movili","Brazos FlipUp abatibles","Descansapiés desmontables","Ruedas 24\" · facilita transferencias · 100 kg"],"swatch":{"name":"Gris","hex":"#7d8794"},"sizeLabel":null},{"id":"p165","name":"DE Movili Motion 18\"","brand":"Reactiv","cat":"Sillas de ruedas","img":"assets/opt/p165_DE_Movili_Motion_18.jpg","sizes":["GRIS"],"tags":[],"desc":"Silla de acero de la línea Movili que combina brazos abatibles FlipUp con elevapiernas desmontables. Pensada para quien necesita elevar las piernas y, además, facilitar las transferencias dentro y fuera de la silla. Tapicería de nylon, ruedas de 24\" autoimpulsables y bolsa trasera. Soporta hasta 100 kg.","price":4060,"cost":2620,"qty":0,"sku":"R218027PV-TN","features":["Acero línea Movili","Brazos FlipUp + elevapiernas desmontables","Ideal para elevar piernas y trasladar","Ruedas 24\" autoimpulsables · 100 kg"],"swatch":{"name":"Gris","hex":"#7d8794"},"sizeLabel":null},{"id":"p166","name":"DA Activ Xtrem 18”","brand":"Reactiv","cat":"Sillas de ruedas","img":"assets/opt/v_R218020Br-TN.jpg","sizes":["BRUMA"],"tags":[],"desc":"Silla todo terreno de estructura reforzada de acero con ruedas traseras neumáticas de 24\" de uso rudo y delanteras de 8\"x2\", para rodar con seguridad en banquetas, terracería y terreno irregular. Brazos abatibles FlipUp y descansapiés desmontables que facilitan las transferencias, más reflejantes para mayor visibilidad de noche. Asiento de 18\" (estándar). Es la más resistente para uso en exteriores; soporta hasta 120 kg.","price":3170,"cost":2044.99,"qty":0,"sku":"R218020Br-TN","features":["Todo terreno · acero reforzado","Ruedas neumáticas 24\" de uso rudo","Brazos FlipUp + reflejantes","Asiento 18\" · soporta 120 kg"],"swatch":{"name":"Bruma","hex":"#C4B79E"},"sizeLabel":null,"variants":[{"color":"Bruma","hex":"#C4B79E","sku":"R218020Br-TN","img":"assets/opt/v_R218020Br-TN.jpg"},{"color":"Lodo","hex":"#2B2B2B","sku":"R218020Ld-TN","img":"assets/opt/v_R218020Ld-TN.jpg"},{"color":"Rojo Lava","hex":"#B4232A","sku":"R218020FG-TN","img":"assets/opt/v_R218020FG-TN.jpg"},{"color":"Tormenta","hex":"#2A5C9E","sku":"R218020To-TN","img":"assets/opt/v_R218020To-TN.jpg"}]},{"id":"p170","name":"DA Activ Xtrem 20”","brand":"Reactiv","cat":"Sillas de ruedas","img":"assets/opt/v_R218060Br-TN.jpg","sizes":["BRUMA"],"tags":[],"desc":"Versión de la Activ Xtrem todo terreno con asiento amplio de 20\" para usuarios de mayor complexión o que buscan más holgura. Estructura reforzada de acero, ruedas neumáticas de 24\" de uso rudo y delanteras de 8\"x2\" para terreno irregular, brazos abatibles FlipUp, descansapiés desmontables y reflejantes. Soporta hasta 120 kg.","price":3700,"cost":2389.99,"qty":0,"sku":"R218060Br-TN","features":["Todo terreno · asiento amplio 20\"","Ruedas neumáticas 24\" de uso rudo","Brazos FlipUp + reflejantes","Mayor holgura · soporta 120 kg"],"swatch":{"name":"Bruma","hex":"#C4B79E"},"sizeLabel":null,"variants":[{"color":"Bruma","hex":"#C4B79E","sku":"R218060Br-TN","img":"assets/opt/v_R218060Br-TN.jpg"},{"color":"Lodo","hex":"#2B2B2B","sku":"R218060Ld-TN","img":"assets/opt/v_R218060Ld-TN.jpg"},{"color":"Rojo Lava","hex":"#B4232A","sku":"R218060FG-TN","img":"assets/opt/v_R218060FG-TN.jpg"}]},{"id":"p172","name":"DE Activ Xtrem 18”","brand":"Reactiv","cat":"Sillas de ruedas","img":"assets/opt/v_R218027Br-TN.jpg","sizes":["BRUMA"],"tags":[],"desc":"Versión todo terreno de la Activ Xtrem con elevapiernas abatibles y desmontables en lugar de descansapiés simples. Ruedas neumáticas de 24\" de uso rudo y delanteras de 8\"x2\" para terreno irregular, brazos abatibles FlipUp y reflejantes. Ideal cuando se necesita elevar las piernas y, a la vez, rodar en exteriores. Asiento de 18\"; soporta hasta 120 kg.","price":3560,"cost":2299.99,"qty":0,"sku":"R218027Br-TN","features":["Todo terreno · elevapiernas abatibles","Ruedas neumáticas 24\" de uso rudo","Brazos FlipUp + reflejantes","Asiento 18\" · soporta 120 kg"],"swatch":{"name":"Bruma","hex":"#C4B79E"},"sizeLabel":null,"variants":[{"color":"Bruma","hex":"#C4B79E","sku":"R218027Br-TN","img":"assets/opt/v_R218027Br-TN.jpg"},{"color":"Lodo","hex":"#2B2B2B","sku":"R218027Ld-TN","img":"assets/opt/v_R218027Ld-TN.jpg"},{"color":"Tormenta","hex":"#2A5C9E","sku":"R218027To-TN","img":"assets/opt/v_R218027To-TN.jpg"}]},{"id":"p175","name":"DE Activ Xtrem 20”","brand":"Reactiv","cat":"Sillas de ruedas","img":"assets/opt/v_R218061Br-TN.jpg","sizes":["BRUMA"],"tags":[],"desc":"Activ Xtrem todo terreno con elevapiernas desmontables y asiento amplio de 20\". Combina la capacidad de elevar las piernas con un asiento más holgado y la robustez de las ruedas neumáticas de 24\" de uso rudo. Brazos abatibles FlipUp y reflejantes. Soporta hasta 120 kg.","price":4070,"cost":2629.99,"qty":0,"sku":"R218061Br-TN","features":["Todo terreno · elevapiernas + asiento 20\"","Ruedas neumáticas 24\" de uso rudo","Brazos FlipUp + reflejantes","Soporta 120 kg"],"swatch":{"name":"Bruma","hex":"#C4B79E"},"sizeLabel":null,"variants":[{"color":"Bruma","hex":"#C4B79E","sku":"R218061Br-TN","img":"assets/opt/v_R218061Br-TN.jpg"},{"color":"Lodo","hex":"#2B2B2B","sku":"R218061Ld-TN","img":"assets/opt/v_R218061Ld-TN.jpg"}]},{"id":"p177","name":"Silla de Ruedas PCI","brand":"Reactiv","cat":"Sillas de ruedas","img":"assets/opt/p177_Silla_de_Ruedas_PCI.jpg","sizes":["14”"],"tags":["adulto-mayor"],"desc":"Silla de ruedas de aluminio para parálisis cerebral infantil (PCI) con sistema basculante (tilt) y respaldo reclinable que ayudan a corregir la postura del niño y a prevenir escaras por presión. Tapicería tipo malla, descansabrazos y elevapiernas desmontables y ruedas traseras MAG de 16\". Elige el asiento según la talla del pequeño: 14\" o 16\".","price":8270,"cost":5344.99,"qty":0,"sku":"R210114-N","features":["Aluminio postural infantil (PCI)","Sistema basculante (tilt)","Respaldo reclinable · previene escaras","Elevapiernas desmontables · asiento 14\"/16\""],"swatch":null,"sizeLabel":"14”"},{"id":"p179","name":"Silla de Ruedas PCA","brand":"Reactiv","cat":"Sillas de ruedas","img":"assets/opt/p179_Silla_de_Ruedas_PCA.jpg","sizes":["18”"],"tags":["adulto-mayor"],"desc":"Versión para adulto de la silla postural para parálisis cerebral (PCA): aluminio, asiento de 18\", basculante y con respaldo reclinable para acomodar y estabilizar a quien requiere apoyo postural. Tapicería tipo malla, descansabrazos y elevapiernas desmontables. Color gris grafito.","price":8270,"cost":5344.99,"qty":0,"sku":"R210118-G","features":["Aluminio postural adulto (PCA)","Basculante + respaldo reclinable","Soporte y estabilización postural","Elevapiernas desmontables · asiento 18\""],"swatch":null,"sizeLabel":"18”"},{"id":"p299","name":"Silla de Ruedas con Comodo","brand":"Reactiv","cat":"Sillas de ruedas","img":"assets/opt/p299_Silla_de_Ruedas_con_Comodo.jpg","sizes":["AZUL"],"tags":["adulto-mayor"],"desc":"Silla de ruedas con asiento tipo cómodo: lleva una abertura sanitaria y un recipiente removible que permiten usarla como apoyo al baño sin tener que pasar al paciente a otro lugar. Útil para personas con movilidad muy reducida y para el cuidado en casa.","price":3830,"cost":2470,"qty":1,"sku":"R211022R-Com","features":["Asiento tipo cómodo con abertura sanitaria","Recipiente removible","Apoyo al baño sin transferir al paciente","Ideal para movilidad muy reducida"],"swatch":{"name":"Azul","hex":"#1565c0"},"sizeLabel":null},{"id":"p300","name":"Folding Sport 20\"","brand":"Reactiv","cat":"Sillas de ruedas","img":"assets/opt/p300_Folding_Sport_20.jpg","sizes":["Negro"],"tags":[],"desc":"Silla plegable tipo sport con asiento amplio de 20\" y estructura ligera. Diseño compacto que se dobla con facilidad para guardarla o llevarla; pensada para traslados y un uso más dinámico. Acabado en negro.","price":1740,"cost":1119.99,"qty":0,"sku":"R229060NG-TN","features":["Plegable tipo sport · ligera","Asiento amplio 20\"","Se dobla con facilidad","Para traslados y uso dinámico"],"swatch":{"name":"Negro","hex":"#1c1c1c"},"sizeLabel":null},{"id":"p301","name":"DA Xtrem QR de Aluminio","brand":"Reactiv","cat":"Sillas de ruedas","img":"assets/opt/p301_DA_Xtrem_QR_de_Aluminio.jpg","sizes":["Gris"],"tags":[],"desc":"Silla Activ Xtrem fabricada en aluminio: notablemente más ligera que la versión de acero y con ruedas traseras de liberación rápida (Quick Release) que se desmontan sin herramienta para guardarla o subirla al auto. Brazos cortos desmontables tipo escritorio para acercarse a una mesa y hacer transferencias laterales. La mejor opción para quien sale y transporta la silla con frecuencia.","price":5290,"cost":3420,"qty":0,"sku":"R218032ES-TN","features":["Aluminio ultraligero","Ruedas traseras QR de liberación rápida","Brazos escritorio desmontables","La mejor para transportar en auto"],"swatch":{"name":"Gris","hex":"#7d8794"},"sizeLabel":null},{"id":"a1","name":"Activ Xtrem Aluminum 18\"","brand":"Reactiv","cat":"Sillas de ruedas","img":"assets/opt/v_R218120AR-TN.jpg","sizes":[],"tags":[],"desc":"Silla Activ Xtrem fabricada en aluminio: mucho más ligera que la versión de acero, ideal para quien transporta la silla con frecuencia. Asiento de 18\", color Azul Ártico. Consúltanos disponibilidad y precio.","price":5310,"sku":"R218120AR-TN","features":["Marco de aluminio ligero","Rueda trasera de 24\"","Perfil deportivo","Brazos y descansapiés desmontables"],"swatch":{"name":"Azul Ártico","hex":"#5B8FC9"},"sizeLabel":null,"cost":3429.99},{"id":"a2","name":"Activ Xtrem Aluminum 20” Extra Ancha","brand":"Reactiv","cat":"Sillas de ruedas","img":"assets/opt/v_R218160HI-TN.jpg","sizes":[],"tags":[],"desc":"Versión Aluminum de 20\" Extra Ancha de la Activ Xtrem: estructura de aluminio ligero con asiento amplio. Color Gris Hielo. Soporta mayor complexión.","price":5450,"sku":"R218160HI-TN","features":["Marco de aluminio ligero","Asiento extra ancho de 20\"","Ruedas para uso rudo","Brazos FlipUp"],"swatch":{"name":"Gris Hielo","hex":"#AEB7BE"},"sizeLabel":null,"cost":3519.99},{"id":"p303","name":"FI Folding 18”","brand":"Reactiv","cat":"Sillas de ruedas","img":"assets/opt/v_R211001F-NG.jpg","sizes":["ROJO"],"tags":[],"desc":"Silla plegable económica con respaldo abatible, brazos fijos y descansapiés desmontables. Tapicería de vinil de fácil limpieza. Al plegar el respaldo queda muy compacta para guardar o transportar en cajuela. Buena opción de bajo costo para traslados ocasionales y uso doméstico.","price":1860,"cost":1199.99,"qty":1,"sku":"R211001F-NG","features":["Plegable económica","Respaldo abatible · muy compacta","Brazos fijos · descansapiés desmontables","Tapicería de vinil fácil de limpiar"],"swatch":{"name":"Negro","hex":"#1c1c1c"},"sizeLabel":null,"variants":[{"color":"Negro","hex":"#1c1c1c","sku":"R211001F-NG","img":"assets/opt/v_R211001F-NG.jpg"},{"color":"Azul","hex":"#1565c0","sku":"R211001F-A","img":"assets/opt/v_R211001F-A.jpg"},{"color":"Rojo","hex":"#c62828","sku":"R211001F-R","img":"assets/opt/v_R211001F-R.jpg"},{"color":"Gris","hex":"#7d8794","sku":"R211001F-G","img":"assets/opt/v_R211001F-G.jpg"}]},{"id":"p307","name":"SA Movili Motion 18\"","brand":"Reactiv","cat":"Sillas de ruedas","img":"assets/opt/p307_SA_Movili_Motion_18.jpg","sizes":["GRIS"],"tags":[],"desc":"Silla de ruedas estándar de acero con brazos fijos acojinados y descansapiés abatibles y desmontables. Tapicería de nylon transpirable de fácil limpieza, bolsa trasera integrada y ruedas traseras de 24\" tipo MAG para que el propio usuario pueda impulsarse. Es la opción más accesible de la línea Movili: ideal para uso diario en interiores y traslados sobre piso firme. Soporta hasta 100 kg.","price":3080,"cost":1989.99,"qty":1,"sku":"R218010PV-TN","features":["Acero estándar · la más accesible","Brazos fijos acojinados","Descansapiés abatibles y desmontables","Ruedas 24\" MAG autoimpulsables · 100 kg"],"swatch":{"name":"Gris","hex":"#7d8794"},"sizeLabel":null},{"id":"m1","name":"Movili Brazos Fijos con Descansapiés","brand":"Reactiv","cat":"Sillas de ruedas","img":"assets/opt/v_R218010-A.jpg","sizes":[],"tags":[],"desc":"Silla de ruedas Movili de acero con brazos fijos y descansapiés desmontables. Tapicería azul de fácil limpieza y ruedas traseras de 24\" para que el usuario se impulse. Consúltanos disponibilidad y precio.","price":3480,"sku":"R218010-A","features":["Acero · línea Movili","Brazos fijos","Descansapiés desmontables","Ruedas 24\" autoimpulsables"],"swatch":{"name":"Azul","hex":"#1565c0"},"sizeLabel":null,"cost":2249.99},{"id":"m2","name":"Movili Brazos Fijos con Elevapiernas","brand":"Reactiv","cat":"Sillas de ruedas","img":"assets/opt/v_R218017-A.jpg","sizes":[],"tags":[],"desc":"Silla de ruedas Movili de acero con brazos fijos y elevapiernas abatibles y desmontables, para mantener la pierna en alto. Tapicería azul, ruedas de 24\". Consúltanos disponibilidad y precio.","price":3810,"sku":"R218017-A","features":["Acero · línea Movili","Brazos fijos","Elevapiernas abatibles y desmontables","Ruedas 24\" autoimpulsables"],"swatch":{"name":"Azul","hex":"#1565c0"},"sizeLabel":null,"cost":2459.99},{"id":"m3","name":"Movili Extra Ancha con Descansapiés","brand":"Reactiv","cat":"Sillas de ruedas","img":"assets/opt/v_R218360.jpg","sizes":[],"tags":[],"desc":"Silla de ruedas Movili Extra Ancha para usuarios de mayor complexión: asiento amplio, brazos abatibles y descansapiés desmontables. Consúltanos disponibilidad y precio.","price":5700,"sku":"R218360","features":["Asiento extra ancho","Brazos abatibles","Descansapiés desmontables","Alta capacidad de carga"],"swatch":{"name":"Negro","hex":"#1c1c1c"},"sizeLabel":null,"cost":3679.99},{"id":"m4","name":"Movili Extra Ancha con Elevapiernas","brand":"Reactiv","cat":"Sillas de ruedas","img":"assets/opt/v_R218361.jpg","sizes":[],"tags":[],"desc":"Silla de ruedas Movili Extra Ancha con elevapiernas abatibles y desmontables, para usuarios de mayor complexión que necesitan elevar las piernas. Consúltanos disponibilidad y precio.","price":6050,"sku":"R218361","features":["Asiento extra ancho","Brazos abatibles","Elevapiernas abatibles y desmontables","Alta capacidad de carga"],"swatch":{"name":"Negro","hex":"#1c1c1c"},"sizeLabel":null,"cost":3909.99},{"id":"x1","name":"Folding Sport 20” Reforzada","brand":"Reactiv","cat":"Sillas de ruedas","sizes":[],"tags":[],"desc":"Silla plegable tipo sport de 20\" en acero de alta resistencia, con respaldo plegable de perilla, ruedas traseras de 24\" con cañuela grabada y aro motriz de resina. Tapicería de nylon. Soporta hasta 100 kg.","cost":1399.99,"price":2170,"features":["Respaldo plegable con perilla","Ruedas traseras 24\" con cañuela","Aro motriz dentado de resina","Acero de alta resistencia · 100 kg"],"sizeLabel":null,"sku":"R228060NG-TN","img":"assets/opt/v_R228060NG-TN.jpg","swatch":{"name":"Negro","hex":"#1c1c1c"}},{"id":"x2","name":"DA Movili Bariátrica Extra Ancha 22”","brand":"Reactiv","cat":"Sillas de ruedas","sizes":[],"tags":[],"desc":"Silla de ruedas bariátrica extra ancha de 22\" en acero cromado reforzado con doble cruceta. Ruedas semineumáticas de 24\" y llantas delanteras 8x2\" Heavy Duty. Ideal para usuarios que requieren mayor soporte. Soporta hasta 180 kg.","cost":3959.99,"price":6130,"features":["Asiento extra ancho de 22\"","Acero cromado con doble cruceta","Descansapiés desmontables","Llantas 8x2\" Heavy Duty · hasta 180 kg"],"sizeLabel":null,"sku":"R218362","img":"assets/opt/v_R218362.jpg","swatch":{"name":"Gris","hex":"#7d8794"}},{"id":"x3","name":"DE Movili Bariátrica Extra Ancha 22”","brand":"Reactiv","cat":"Sillas de ruedas","sizes":[],"tags":[],"desc":"Versión con elevapiernas de la silla bariátrica extra ancha de 22\". Acero cromado reforzado con doble cruceta, ruedas semineumáticas de 24\". Soporta hasta 180 kg.","cost":4189.99,"price":6490,"features":["Asiento extra ancho de 22\"","Acero cromado con doble cruceta","Elevapiernas abatibles y desmontables","Llantas 8x2\" Heavy Duty · hasta 180 kg"],"sizeLabel":null,"sku":"R218363","img":"assets/opt/v_R218363.jpg","swatch":{"name":"Gris","hex":"#7d8794"}},{"id":"x4","name":"DA Movili Bariátrica Extra Ancha 24”","brand":"Reactiv","cat":"Sillas de ruedas","sizes":[],"tags":[],"desc":"Silla bariátrica extra ancha de 24\" en acero cromado reforzado con doble cruceta. La máxima capacidad de la línea Movili. Soporta hasta 200 kg.","cost":4229.99,"price":6550,"features":["Asiento extra ancho de 24\"","Acero cromado con doble cruceta","Descansapiés desmontables","Llantas 8x2\" Heavy Duty · hasta 200 kg"],"sizeLabel":null,"sku":"R218364","img":"assets/opt/v_R218364.jpg","swatch":{"name":"Gris","hex":"#7d8794"}},{"id":"x5","name":"DE Movili Bariátrica Extra Ancha 24”","brand":"Reactiv","cat":"Sillas de ruedas","sizes":[],"tags":[],"desc":"Silla bariátrica extra ancha de 24\" con elevapiernas, acero cromado reforzado y horquillas de aluminio. Soporta hasta 200 kg.","cost":4459.99,"price":6900,"features":["Asiento extra ancho de 24\"","Horquillas de aluminio ligeras","Elevapiernas abatibles y desmontables","Llantas 8x2\" Heavy Duty · hasta 200 kg"],"sizeLabel":null,"sku":"R218365","img":"assets/opt/v_R218365.jpg","swatch":{"name":"Gris","hex":"#7d8794"}},{"id":"x6","name":"CO Movili de Aluminio (Traslado)","brand":"Reactiv","cat":"Sillas de ruedas","sizes":[],"tags":[],"desc":"Silla de traslado en aluminio ligero acabado a color, con respaldo plegable para transportarla con menor espacio. Cuatro ruedas de 8\", propulsada por un acompañante. Soporta hasta 113 kg.","cost":2081.99,"price":3230,"features":["Aluminio ligero a color","Respaldo plegable","Brazos y descansapiés desmontables","4 ruedas de 8\" · hasta 113 kg"],"sizeLabel":null,"variants":[{"color":"Vino","hex":"#7b1a2e","sku":"R214041-T-TN","img":"assets/opt/v_R214041-T-TN.jpg"},{"color":"Azul","hex":"#1565c0","sku":"R214041-A-TN","img":"assets/opt/v_R214041-A-TN.jpg"}],"sku":"R214041-T-TN","img":"assets/opt/v_R214041-T-TN.jpg","swatch":{"name":"Vino","hex":"#7b1a2e"}},{"id":"x7","name":"CO Movili de Aluminio de Lujo (Traslado)","brand":"Reactiv","cat":"Sillas de ruedas","sizes":[],"tags":[],"desc":"Silla de traslado de lujo en aluminio, con respaldo plegable, ruedas traseras de 12\" y delanteras de 8\", y práctica bolsa portaobjetos. Ideal para cuidados en casa y traslados. Soporta hasta 113 kg.","cost":2199.99,"price":3410,"features":["Aluminio ligero a color","Respaldo plegable","Ruedas traseras 12\" y delanteras 8\"","Bolsa portaobjetos · hasta 113 kg"],"sizeLabel":null,"variants":[{"color":"Azul","hex":"#1565c0","sku":"R214042-A-TN","img":"assets/opt/v_R214042-A-TN.jpg"},{"color":"Plata","hex":"#9aa7b0","sku":"R214042-P-TN","img":"assets/opt/v_R214042-P-TN.jpg"},{"color":"Rojo","hex":"#c62828","sku":"R214042-R-TN","img":"assets/opt/v_R214042-R-TN.jpg"}],"sku":"R214042-A-TN","img":"assets/opt/v_R214042-A-TN.jpg","swatch":{"name":"Azul","hex":"#1565c0"}},{"id":"x8","name":"CO Plegoö Semi Bariátrica de Aluminio (Traslado)","brand":"Reactiv","cat":"Sillas de ruedas","sizes":[],"tags":[],"desc":"Silla de traslado semibariátrica en aluminio, ligera y plegable, con empuñaduras ergonómicas y sistema de frenos de cable con bloqueo para quien asiste al usuario. Soporta hasta 136 kg.","cost":2395.99,"price":3710,"features":["Aluminio con pintura líquida","Llantas de 8\" para rodar suave","Empuñaduras ergonómicas","Frenos de cable con bloqueo · hasta 136 kg"],"sizeLabel":null,"sku":"R226001-CH","img":"assets/opt/v_R226001-CH.jpg","swatch":{"name":"Negro","hex":"#1c1c1c"}},{"id":"x9","name":"CO Movili Motion (Traslado)","brand":"Reactiv","cat":"Sillas de ruedas","sizes":[],"tags":[],"desc":"Silla de traslado de la línea Movili Motion en acero con acabado Platinum Vein. Ruedas traseras de 12\" y delanteras de 8\", propulsada por un acompañante. Soporta hasta 110 kg.","cost":2395.99,"price":3710,"features":["Acero acabado Platinum Vein","Ruedas traseras 12\" y delanteras 8\"","Descansapiés desmontables","Tapicería de nylon · hasta 110 kg"],"sizeLabel":null,"sku":"R218042PV-TN","img":"assets/opt/v_R218042PV-TN.jpg","swatch":{"name":"Ciruela","hex":"#6a1b9a"}},{"id":"x10","name":"DA Activ Xtrem Kiddy 14” (Infantil)","brand":"Reactiv","cat":"Sillas de ruedas","sizes":[],"tags":[],"desc":"Silla Activ Xtrem talla Kiddy de 14\" para niños, en acero con ruedas neumáticas traseras de 20\" y delanteras semineumáticas de 6x1.5\". Brazos tipo escritorio abatibles FlipUp. Soporta hasta 80 kg.","cost":2399.99,"price":3720,"features":["Talla infantil · asiento 14\"","Ruedas neumáticas traseras de 20\"","Brazos escritorio FlipUp","Descansapiés desmontables · hasta 80 kg"],"sizeLabel":null,"sku":"R218014TE-TN","img":"assets/opt/v_R218014TE-TN.jpg","swatch":{"name":"Rojo","hex":"#c62828"}},{"id":"x11","name":"DA Activ Xtrem Kiddy 16”","brand":"Reactiv","cat":"Sillas de ruedas","sizes":[],"tags":[],"desc":"Silla Activ Xtrem de 16\" en acero, con brazos de cascada abatibles FlipUp, ruedas neumáticas traseras de 24\" y delanteras 8x2\", con reflejantes en los rayos. Soporta hasta 120 kg.","cost":2081.99,"price":3230,"features":["Asiento 16\"","Brazos de cascada FlipUp","Ruedas neumáticas traseras de 24\"","Reflejantes en los rayos · hasta 120 kg"],"sizeLabel":null,"sku":"R218020TE-TN-16","img":"assets/opt/v_R218020TE-TN-16.jpg","swatch":{"name":"Rojo","hex":"#c62828"}},{"id":"x12","name":"DA Activ Xtrem QR Acero 18”","brand":"Reactiv","cat":"Sillas de ruedas","sizes":[],"tags":[],"desc":"Silla Activ Xtrem QR de acero con sistema Quick Release que permite retirar las ruedas traseras sin herramienta. Ruedas neumáticas de 24\" de uso rudo. Soporta hasta 135 kg.","cost":2358.99,"price":3650,"features":["Sistema Quick Release (ruedas desmontables)","Ruedas neumáticas 24\" de uso rudo","Delanteras semineumáticas 8x2\"","Puños ergonómicos · hasta 135 kg"],"sizeLabel":null,"sku":"R218030LU-TN","img":"assets/opt/v_R218030LU-TN.jpg","swatch":{"name":"Gris","hex":"#7d8794"}},{"id":"x13","name":"DA Activ Xtrem QR Acero 20”","brand":"Reactiv","cat":"Sillas de ruedas","sizes":[],"tags":[],"desc":"Versión de 20\" de la Activ Xtrem QR de acero con sistema Quick Release para retirar las ruedas con facilidad. Ruedas neumáticas de 24\" de uso rudo. Soporta hasta 135 kg.","cost":2634.99,"price":4080,"features":["Sistema Quick Release","Asiento de 20\"","Ruedas neumáticas 24\" de uso rudo","Delanteras 8x2\" · hasta 135 kg"],"sizeLabel":null,"sku":"R218031LU-TN","img":"assets/opt/v_R218031LU-TN.jpg","swatch":{"name":"Gris","hex":"#7d8794"}},{"id":"x14","name":"DA Activ Xtrem QR Aluminio 20”","brand":"Reactiv","cat":"Sillas de ruedas","sizes":[],"tags":[],"desc":"Silla Activ Xtrem QR en aluminio: ultraligera y con sistema Quick Release para retirar las ruedas traseras. Ruedas neumáticas de 24\" de uso rudo. Soporta hasta 120 kg.","cost":3819.99,"price":5910,"features":["Aluminio ultraligero","Sistema Quick Release","Ruedas neumáticas 24\" de uso rudo","Delanteras 8x2\" · hasta 120 kg"],"sizeLabel":null,"sku":"R218033ES-TN","img":"assets/opt/v_R218033ES-TN.jpg","swatch":{"name":"Gris","hex":"#7d8794"}},{"id":"x15","name":"Activ Xtrem con Freno 20” Extra Ancha","brand":"Reactiv","cat":"Sillas de ruedas","sizes":[],"tags":[],"desc":"Silla Activ Xtrem extra ancha de 20\" con sistema de frenos integrado, en acero, acabado color Glaciar. Mayor amplitud de asiento para más comodidad.","cost":2644.99,"price":4100,"features":["Sistema de frenos integrado","Asiento extra ancho de 20\"","Acero resistente","Color Glaciar"],"sizeLabel":null,"sku":"R218260GL-TN","img":"assets/opt/v_R218260GL-TN.jpg","swatch":{"name":"Glaciar","hex":"#7fb8d8"}},{"id":"x16","name":"DE Xtrem Bariátrica de Acero 22”","brand":"Reactiv","cat":"Sillas de ruedas","sizes":[],"tags":[],"desc":"Silla Xtrem bariátrica de acero con asiento extra ancho de 22\" y elevapiernas abatibles y desmontables. Alta capacidad de carga para usuarios de mayor complexión.","cost":3409.99,"price":5280,"features":["Asiento extra ancho de 22\"","Elevapiernas abatibles y desmontables","Acero de alta resistencia","Alta capacidad de carga"],"sizeLabel":null,"sku":"R218053","img":"assets/opt/v_R218053.jpg","swatch":{"name":"Gris","hex":"#7d8794"}},{"id":"x17","name":"DA R2MIL Forte de Aluminio","brand":"Reactiv","cat":"Sillas de ruedas","sizes":[],"tags":[],"desc":"Silla R2MIL Forte en aluminio ultraligero, con brazos abatibles FlipUp y descansapiés desmontables. Combina ligereza y resistencia. Color Azul.","cost":3795.99,"price":5880,"features":["Marco de aluminio ultraligero","Brazos FlipUp abatibles","Descansapiés desmontables","Alta resistencia"],"sizeLabel":null,"sku":"R220020A-TN","img":"assets/opt/v_R220020A-TN.jpg","swatch":{"name":"Azul","hex":"#1565c0"}},{"id":"x18","name":"R2MIL Forte 20” Extra Ancha de Aluminio","brand":"Reactiv","cat":"Sillas de ruedas","sizes":[],"tags":[],"desc":"Silla R2MIL Forte extra ancha de 20\" en aluminio ultraligero, con brazos abatibles FlipUp. Mayor amplitud de asiento. Color Negro.","cost":3998.99,"price":6190,"features":["Aluminio ultraligero","Asiento extra ancho de 20\"","Brazos FlipUp abatibles","Descansapiés desmontables"],"sizeLabel":null,"sku":"R220060-NG-TN","img":"assets/opt/v_R220060-NG-TN.jpg","swatch":{"name":"Negro","hex":"#1c1c1c"}},{"id":"x19","name":"DE R2MIL Forte de Aluminio","brand":"Reactiv","cat":"Sillas de ruedas","sizes":[],"tags":[],"desc":"Silla R2MIL Forte en aluminio ultraligero, con brazos abatibles FlipUp y elevapiernas abatibles y desmontables. Color Negro.","cost":3998.99,"price":6190,"features":["Aluminio ultraligero","Brazos FlipUp abatibles","Elevapiernas abatibles y desmontables","Alta resistencia"],"sizeLabel":null,"sku":"R220027-NG-TN","img":"assets/opt/v_R220027-NG-TN.jpg","swatch":{"name":"Negro","hex":"#1c1c1c"}},{"id":"x20","name":"DE R2MIL Forte 20” Extra Ancha de Aluminio","brand":"Reactiv","cat":"Sillas de ruedas","sizes":[],"tags":[],"desc":"Silla R2MIL Forte extra ancha de 20\" en aluminio ultraligero, con brazos FlipUp y elevapiernas abatibles y desmontables. Color Azul.","cost":4367.99,"price":6760,"features":["Aluminio ultraligero","Asiento extra ancho de 20\"","Brazos FlipUp abatibles","Elevapiernas abatibles y desmontables"],"sizeLabel":null,"sku":"R220061A-TN","img":"assets/opt/v_R220061A-TN.jpg","swatch":{"name":"Azul","hex":"#1565c0"}},{"id":"x21","name":"CO R2MIL Forte 19” con Freno de Aluminio (Traslado)","brand":"Reactiv","cat":"Sillas de ruedas","sizes":[],"tags":[],"desc":"Silla de traslado R2MIL Forte de 19\" en aluminio, con freno de acompañante. Ligera y compacta, propulsada por quien asiste al usuario.","cost":2164.99,"price":3350,"features":["Aluminio ligero · asiento 19\"","Freno de acompañante","Ruedas traseras pequeñas","Propulsada por acompañante"],"sizeLabel":null,"variants":[{"color":"Negro","hex":"#1c1c1c","sku":"R220041-NG-TN","img":"assets/opt/v_R220041-NG-TN.jpg"},{"color":"Plata","hex":"#9aa7b0","sku":"R220041-P-TN","img":"assets/opt/v_R220041-P-TN.jpg"}],"sku":"R220041-NG-TN","img":"assets/opt/v_R220041-NG-TN.jpg","swatch":{"name":"Negro","hex":"#1c1c1c"}},{"id":"x22","name":"CO R2MIL Forte 19” de Acero (Traslado)","brand":"Reactiv","cat":"Sillas de ruedas","sizes":[],"tags":[],"desc":"Silla de traslado R2MIL Forte de 19\" en acero, ligera y compacta, propulsada por un acompañante. Ideal para interiores y desplazamientos cortos.","cost":1759.99,"price":2730,"features":["Acero resistente · asiento 19\"","Ruedas traseras pequeñas","Propulsada por acompañante","Ligera y compacta"],"sizeLabel":null,"variants":[{"color":"Azul","hex":"#1565c0","sku":"R220042-A-TN","img":"assets/opt/v_R220042-A-TN.jpg"},{"color":"Rojo","hex":"#c62828","sku":"R220042-R-TN","img":"assets/opt/v_R220042-R-TN.jpg"}],"sku":"R220042-A-TN","img":"assets/opt/v_R220042-A-TN.jpg","swatch":{"name":"Azul","hex":"#1565c0"}},{"id":"x23","name":"CO R2MIL Forte 19” de Acero de Lujo (Traslado)","brand":"Reactiv","cat":"Sillas de ruedas","sizes":[],"tags":[],"desc":"Silla de traslado R2MIL Forte de 19\" en acero con acabado de lujo, ligera y compacta, propulsada por un acompañante.","cost":1952.99,"price":3030,"features":["Acero · asiento 19\"","Acabado de lujo","Ruedas traseras pequeñas","Propulsada por acompañante"],"sizeLabel":null,"variants":[{"color":"Negro","hex":"#1c1c1c","sku":"R220043-NG-TN","img":"assets/opt/v_R220043-NG-TN.jpg"},{"color":"Plata","hex":"#9aa7b0","sku":"R220043-P-TN","img":"assets/opt/v_R220043-P-TN.jpg"}],"sku":"R220043-NG-TN","img":"assets/opt/v_R220043-NG-TN.jpg","swatch":{"name":"Negro","hex":"#1c1c1c"}},{"id":"x24","name":"Activ Silla con Respaldo Reclinable","brand":"Reactiv","cat":"Sillas de ruedas","sizes":[],"tags":[],"desc":"Silla de ruedas con respaldo reclinable que permite ajustar la inclinación para mayor comodidad y soporte postural, ideal para usuarios que pasan tiempo prolongado en la silla.","cost":3454.99,"price":5350,"features":["Respaldo reclinable","Soporte postural","Mayor comodidad en reposo prolongado","Acero resistente"],"sizeLabel":null,"sku":"R211037A","img":"assets/opt/v_R211037A.jpg","swatch":{"name":"Gris","hex":"#7d8794"}}]},{"key":"movilidad","nombre":"Auxiliares de movilidad","sub":"Bastones, andaderas, rollators, muletas y barras de apoyo.","cats":["Bastones","Andaderas","Muletas","Rollators","Apoyos y barras"],"items":[{"id":"p79","name":"Baston Mango Aleman 4 Apoyos","brand":"Reactiv","cat":"Bastones","img":"assets/opt/v_R219030.jpg","sizes":["AZUL"],"tags":["adulto-mayor"],"desc":"Bastón de apoyo que aporta estabilidad y seguridad al caminar, ideal para el adulto mayor o la recuperación de la marcha.","price":260,"cost":166,"qty":1,"sku":"R219030","features":["Base de 4 puntos de apoyo (quad)","Mango anatómico alemán","Altura ajustable","Conteras antiderrapantes"],"swatch":{"name":"Azul","hex":"#1565c0"},"sizeLabel":null,"variants":[{"color":"Azul","hex":"#1565c0","sku":"R219030","img":"assets/opt/v_R219030.jpg"},{"color":"Verde","hex":"#2e7d32","sku":"R219031","img":"assets/opt/v_R219031.jpg"}]},{"id":"p81","name":"Baston Industrial Mango Cuello de Ganso 4 Apoyos","brand":"Reactiv","cat":"Bastones","img":"assets/opt/p81_Baston_Industrial_Mango_Cuello_de_Ganso_.jpg","sizes":["GRIS"],"tags":["adulto-mayor"],"desc":"Bastón de apoyo que aporta estabilidad y seguridad al caminar, ideal para el adulto mayor o la recuperación de la marcha.","price":220,"cost":140,"qty":1,"sku":"R100050","features":["Base de 4 puntos de apoyo","Mango cuello de ganso","Tubo industrial reforzado","Altura ajustable"],"swatch":{"name":"Gris","hex":"#7d8794"},"sizeLabel":null},{"id":"p83","name":"Baston Mango Aleman Industrial","brand":"Reactiv","cat":"Bastones","img":"assets/opt/p83_Baston_Mango_Aleman_Industrial.jpg","sizes":["GRIS"],"tags":["mas-vendido","adulto-mayor"],"desc":"Bastón de apoyo que aporta estabilidad y seguridad al caminar, ideal para el adulto mayor o la recuperación de la marcha.","price":130,"cost":83,"qty":7,"sku":"R100013","features":["Mango anatómico alemán","Tubo industrial reforzado","Altura ajustable","Contera antiderrapante"],"swatch":{"name":"Gris","hex":"#7d8794"},"sizeLabel":null},{"id":"p140","name":"Baston Mango Aleman 1 Apoyo","brand":"Reactiv","cat":"Bastones","img":"assets/opt/v_R211101.jpg","sizes":["NEGRO"],"tags":["mas-vendido","adulto-mayor"],"desc":"Bastón de apoyo que aporta estabilidad y seguridad al caminar, ideal para el adulto mayor o la recuperación de la marcha.","price":140,"cost":90,"qty":1,"sku":"R211101","features":["1 punto de apoyo","Mango anatómico alemán","Aluminio ligero","Altura ajustable"],"swatch":{"name":"Negro","hex":"#1c1c1c"},"sizeLabel":null,"variants":[{"color":"Negro","hex":"#1c1c1c","sku":"R211101","img":"assets/opt/v_R211101.jpg"},{"color":"Bronce","hex":"#8c6d3f","sku":"R211102","img":"assets/opt/v_R211102.jpg"},{"color":"Gris","hex":"#7d8794","sku":"R211103","img":"assets/opt/v_R211103.jpg"}]},{"id":"p143","name":"Baston Mango Cuello Curvo 1 Apoyo","brand":"Reactiv","cat":"Bastones","img":"assets/opt/v_R211121.jpg","sizes":["NEGRO"],"tags":["adulto-mayor"],"desc":"Bastón de apoyo que aporta estabilidad y seguridad al caminar, ideal para el adulto mayor o la recuperación de la marcha.","price":160,"cost":100,"qty":2,"sku":"R211121","features":["Mango curvo clásico","Aluminio ligero","Altura ajustable","Contera antiderrapante"],"swatch":{"name":"Negro","hex":"#1c1c1c"},"sizeLabel":null,"variants":[{"color":"Negro","hex":"#1c1c1c","sku":"R211121","img":"assets/opt/v_R211121.jpg"},{"color":"Bronce","hex":"#8c6d3f","sku":"R211122","img":"assets/opt/v_R211122.jpg"},{"color":"Gris","hex":"#7d8794","sku":"R211123","img":"assets/opt/v_R211123.jpg"}]},{"id":"p146","name":"Baston Cuello de Ganso 1 Apoyo","brand":"Reactiv","cat":"Bastones","img":"assets/opt/v_R211141.jpg","sizes":["BRONCE"],"tags":["adulto-mayor"],"desc":"Bastón de apoyo que aporta estabilidad y seguridad al caminar, ideal para el adulto mayor o la recuperación de la marcha.","price":160,"cost":100,"qty":0,"sku":"R211141","features":["Mango cuello de ganso","Aluminio ligero","Altura ajustable","Acabado bronce"],"swatch":{"name":"Negro","hex":"#1c1c1c"},"sizeLabel":null,"variants":[{"color":"Negro","hex":"#1c1c1c","sku":"R211141","img":"assets/opt/v_R211141.jpg"},{"color":"Bronce","hex":"#8c6d3f","sku":"R211142","img":"assets/opt/v_R211142.jpg"},{"color":"Gris","hex":"#7d8794","sku":"R211143","img":"assets/opt/v_R211143.jpg"}]},{"id":"p148","name":"Baston Mango Aleman Plegable 1 Apoyo","brand":"Reactiv","cat":"Bastones","img":"assets/opt/v_R211111.jpg","sizes":["NEGRO"],"tags":["adulto-mayor"],"desc":"Bastón de apoyo que aporta estabilidad y seguridad al caminar, ideal para el adulto mayor o la recuperación de la marcha.","price":210,"cost":130,"qty":0,"sku":"R211111","features":["Plegable para guardar o viajar","Mango anatómico alemán","Aluminio ligero","Altura ajustable"],"swatch":{"name":"Negro","hex":"#1c1c1c"},"sizeLabel":null,"variants":[{"color":"Negro","hex":"#1c1c1c","sku":"R211111","img":"assets/opt/v_R211111.jpg"},{"color":"Bronce","hex":"#8c6d3f","sku":"R211112","img":"assets/opt/v_R211112.jpg"}]},{"id":"p150","name":"Muletas Aluminio","brand":"Reactiv","cat":"Muletas","img":"assets/opt/p150_Muletas_Aluminio.jpg","sizes":["PD"],"tags":[],"desc":"Muleta que brinda apoyo y descarga de peso durante la recuperación, con ajuste de altura para mayor comodidad.","price":330,"cost":210,"qty":7,"sku":"R213121","features":["Par de muletas axilares","Aluminio ligero","Altura y apoyo ajustables","Conteras antiderrapantes"],"swatch":null,"sizeLabel":"Par"},{"id":"p155","name":"Agarradera Acero Esmaltado","brand":"Reactiv","cat":"Apoyos y barras","img":"assets/opt/p155_Agarradera_Acero_Esmaltado.jpg","sizes":["12”"],"tags":["adulto-mayor"],"desc":"Barra de apoyo que brinda un punto de sujeción firme y seguro en baño u hogar para prevenir caídas.","price":240,"cost":150,"qty":0,"sku":"R100116","features":["Barra de apoyo de 12\"","Acero esmaltado","Para baño y regadera","Tornillería incluida"],"swatch":null,"sizeLabel":"12”"},{"id":"p159","name":"Agarradera Acero Textura","brand":"Reactiv","cat":"Apoyos y barras","img":"assets/opt/p159_Agarradera_Acero_Textura.jpg","sizes":["12”"],"tags":["adulto-mayor"],"desc":"Barra de apoyo que brinda un punto de sujeción firme y seguro en baño u hogar para prevenir caídas.","price":280,"cost":180,"qty":0,"sku":"R204111","features":["Barra de apoyo de 12\"","Superficie texturizada antideslizante","Acero resistente","Para baño y regadera"],"swatch":null,"sizeLabel":"12”"},{"id":"p243","name":"Andadera Premium","brand":"Reactiv","cat":"Andaderas","img":"assets/opt/p243_Andadera_Premium.jpg","sizes":["GRIS"],"tags":["recomendado","adulto-mayor"],"desc":"Andadera que ofrece soporte firme para caminar con seguridad, favoreciendo la independencia y previniendo caídas.","price":790,"cost":506,"qty":1,"sku":"R219064","features":["Andadera fija de aluminio","Altura ajustable","Ligera y resistente","Conteras antiderrapantes"],"swatch":{"name":"Gris","hex":"#7d8794"},"sizeLabel":null},{"id":"p244","name":"Andadera Rollator de Aluminio Ultra Compacta","brand":"Reactiv","cat":"Rollators","img":"assets/opt/p244_Andadera_Rollator_de_Aluminio_Ultra_Comp.jpg","sizes":["Negra"],"tags":["adulto-mayor"],"desc":"Andadera que ofrece soporte firme para caminar con seguridad, favoreciendo la independencia y previniendo caídas.","price":1940,"cost":1253,"qty":0,"sku":"R214047","features":["Rollator con 4 ruedas","Plegado ultracompacto","Asiento y frenos","Aluminio ligero"],"swatch":{"name":"Negra","hex":"#1c1c1c"},"sizeLabel":null},{"id":"p249","name":"Andadera Rollator Plegoo KD de Aluminio","brand":"Reactiv","cat":"Rollators","img":"assets/opt/p249_Andadera_Rollator_Plegoo_KD_de_Aluminio.jpg","sizes":["Azul"],"tags":["adulto-mayor"],"desc":"Andadera que ofrece soporte firme para caminar con seguridad, favoreciendo la independencia y previniendo caídas.","price":2140,"cost":1380,"qty":0,"sku":"R223145","features":["Rollator plegable KD","4 ruedas · asiento y frenos","Aluminio ligero","Fácil de transportar"],"swatch":{"name":"Azul","hex":"#1565c0"},"sizeLabel":null},{"id":"p261","name":"Andadera de Viaje Ultra Compacta","brand":"Reactiv","cat":"Andaderas","img":"assets/opt/p261_Andadera_de_Viaje_Ultra_Compacta.jpg","sizes":["GRIS"],"tags":["adulto-mayor"],"desc":"Andadera que ofrece soporte firme para caminar con seguridad, favoreciendo la independencia y previniendo caídas.","price":1300,"cost":840,"qty":1,"sku":"R225201","features":["Andadera de viaje","Plegado ultracompacto","Aluminio ligero","Altura ajustable"],"swatch":{"name":"Gris","hex":"#7d8794"},"sizeLabel":null},{"id":"p266","name":"Baston Mango Anatomico Industrial","brand":"Reactiv","cat":"Bastones","img":"assets/opt/p266_Baston_Mango_Anatomico_Industrial.jpg","sizes":["GRIS"],"tags":["adulto-mayor"],"desc":"Bastón de apoyo que aporta estabilidad y seguridad al caminar, ideal para el adulto mayor o la recuperación de la marcha.","price":150,"cost":95,"qty":0,"sku":"R100006-D","features":["Mango anatómico ergonómico","Tubo industrial reforzado","Altura ajustable","Contera antiderrapante"],"swatch":{"name":"Gris","hex":"#7d8794"},"sizeLabel":null},{"id":"p309","name":"Andadera 2 en 1","brand":"Reactiv","cat":"Andaderas","img":"assets/opt/p309_Andadera_2_en_1.jpg","sizes":["GRIS"],"tags":["mas-vendido","adulto-mayor"],"desc":"Andadera que ofrece soporte firme para caminar con seguridad, favoreciendo la independencia y previniendo caídas.","price":760,"cost":488,"qty":3,"sku":"R211062B","features":["Convertible: fija o con ruedas","Aluminio ligero","Altura ajustable","Plegable"],"swatch":{"name":"Gris","hex":"#7d8794"},"sizeLabel":null}]},{"key":"bano","nombre":"Baño y seguridad","sub":"Cómodos, sillas de ducha, incrementos y apoyos para baño seguro.","cats":["Baño y seguridad"],"items":[{"id":"p153","name":"Comodo de Aluminio","brand":"Reactiv","cat":"Baño y seguridad","img":"assets/opt/p153_Comodo_de_Aluminio.jpg","sizes":["GRIS"],"tags":["adulto-mayor"],"desc":"Cómodo sanitario que facilita la higiene del paciente con seguridad, práctico para el cuidado en casa.","price":1160,"cost":750,"qty":0,"sku":"R204131","features":["Cómodo sanitario de aluminio","Ligero y resistente a la humedad","Recipiente removible","Para cuidado en casa"],"swatch":{"name":"Gris","hex":"#7d8794"},"sizeLabel":null},{"id":"p154","name":"Comodo de Acero Plegable","brand":"Reactiv","cat":"Baño y seguridad","img":"assets/opt/p154_Comodo_de_Acero_Plegable.jpg","sizes":["UN"],"tags":["adulto-mayor"],"desc":"Cómodo sanitario que facilita la higiene del paciente con seguridad, práctico para el cuidado en casa.","price":1410,"cost":910,"qty":0,"sku":"R211202","features":["Plegable para guardar","Acero resistente","Recipiente removible","Asiento cómodo"],"swatch":null,"sizeLabel":null},{"id":"p214","name":"Incremento para Bano con Brazos Rijos","brand":"Reactiv","cat":"Baño y seguridad","img":"assets/opt/p214_Incremento_para_Bano_con_Brazos_Rijos.jpg","sizes":["UN"],"tags":[],"desc":"Eleva la altura del inodoro para facilitar sentarse y levantarse con menor esfuerzo y mayor seguridad.","price":780,"cost":498,"qty":1,"sku":"R219021","features":["Eleva la altura del inodoro","Con descansabrazos fijos","Menor esfuerzo al sentarse/levantarse","Fácil instalación"],"swatch":null,"sizeLabel":null},{"id":"p250","name":"Comodo Acero 3 en 1 con respaldo blanco","brand":"Reactiv","cat":"Baño y seguridad","img":"assets/opt/p250_Comodo_Acero_3_en_1_con_respaldo_blanco.jpg","sizes":["Blanco"],"tags":["recomendado","adulto-mayor"],"desc":"Cómodo sanitario que facilita la higiene del paciente con seguridad, práctico para el cuidado en casa.","price":820,"cost":530,"qty":0,"sku":"R204133","features":["3 en 1: cómodo, ducha y WC","Acero con respaldo","Recipiente removible","Versátil para el hogar"],"swatch":{"name":"Blanco","hex":"#eceff1"},"sizeLabel":null},{"id":"p251","name":"Comodo de Aluminio con Respaldo","brand":"Reactiv","cat":"Baño y seguridad","img":"assets/opt/p251_Comodo_de_Aluminio_con_Respaldo.jpg","sizes":["Blanco"],"tags":["adulto-mayor"],"desc":"Cómodo sanitario que facilita la higiene del paciente con seguridad, práctico para el cuidado en casa.","price":1550,"cost":996,"qty":0,"sku":"R204132","features":["Cómodo de aluminio con respaldo","Ligero y resistente a la humedad","Recipiente removible","Mayor comodidad"],"swatch":{"name":"Blanco","hex":"#eceff1"},"sizeLabel":null},{"id":"p262","name":"Silla de Ducha con Descansabrazos","brand":"Reactiv","cat":"Baño y seguridad","img":"assets/opt/p262_Silla_de_Ducha_con_Descansabrazos.jpg","sizes":["Blanco"],"tags":[],"desc":"Asiento de baño antiderrapante que permite ducharse de forma segura y cómoda, reduciendo el riesgo de caídas.","price":1090,"cost":700,"qty":0,"sku":"R215018","features":["Asiento de baño antiderrapante","Con descansabrazos","Altura ajustable","Reduce el riesgo de caídas"],"swatch":{"name":"Blanco","hex":"#eceff1"},"sizeLabel":null},{"id":"p296","name":"Comodo de Aluminio 3 en 1","brand":"Reactiv","cat":"Baño y seguridad","img":"assets/opt/p296_Comodo_de_Aluminio_3_en_1.jpg","sizes":["GRIS"],"tags":["adulto-mayor"],"desc":"Cómodo sanitario que facilita la higiene del paciente con seguridad, práctico para el cuidado en casa.","price":1160,"cost":750,"qty":1,"sku":"R219131","features":["3 en 1: cómodo, ducha y WC","Aluminio ligero","Recipiente removible","Versátil para el hogar"],"swatch":{"name":"Gris","hex":"#7d8794"},"sizeLabel":null}]},{"key":"hospital","nombre":"Camas y equipo hospitalario","sub":"Camas manuales y eléctricas, colchones antiescaras, mesas y portasueros.","cats":["Camas y colchones","Equipo hospitalario","Mobiliario hospitalario"],"items":[{"id":"p180","name":"Colchon de Presion Alterna","brand":"Reactiv","cat":"Equipo hospitalario","img":"assets/opt/p180_Colchon_de_Presion_Alterna.jpg","sizes":["VERDE"],"tags":["nuevo"],"desc":"Colchón terapéutico que distribuye la presión y favorece el descanso, ayudando a prevenir úlceras por presión.","price":620,"cost":400,"qty":1,"sku":"R351020","features":["Antiescaras de presión alterna","Bomba con regulador incluida","Previene úlceras por presión","Material resistente, fácil de limpiar"],"swatch":{"name":"Verde","hex":"#2e7d32"},"sizeLabel":null},{"id":"p182","name":"Colchon WaterSoft Agua/Aire","brand":"Reactiv","cat":"Equipo hospitalario","img":"assets/opt/p182_Colchon_WaterSoft_Agua_Aire.jpg","sizes":["GRIS"],"tags":["nuevo"],"desc":"Colchón terapéutico que distribuye la presión y favorece el descanso, ayudando a prevenir úlceras por presión.","price":620,"cost":400,"qty":1,"sku":"R351001","features":["Sistema de agua/aire WaterSoft","Distribuye la presión del cuerpo","Ayuda a prevenir úlceras","Fácil instalación"],"swatch":{"name":"Gris","hex":"#7d8794"},"sizeLabel":null},{"id":"p183","name":"Colchon Impermeable 3 Secciones","brand":"Reactiv","cat":"Equipo hospitalario","img":"assets/opt/p183_Colchon_Impermeable_3_Secciones.jpg","sizes":["CAFE"],"tags":[],"desc":"Colchón terapéutico que distribuye la presión y favorece el descanso, ayudando a prevenir úlceras por presión.","price":1660,"cost":1070,"qty":0,"sku":"R100042","features":["3 secciones","Funda impermeable","Espuma de soporte","Fácil de limpiar y desinfectar"],"swatch":{"name":"Cafe","hex":"#6d4c33"},"sizeLabel":null},{"id":"p184","name":"Colchon Impermeable 4 Secciones","brand":"Reactiv","cat":"Equipo hospitalario","img":"assets/opt/p184_Colchon_Impermeable_4_Secciones.jpg","sizes":["AZUL"],"tags":[],"desc":"Colchón terapéutico que distribuye la presión y favorece el descanso, ayudando a prevenir úlceras por presión.","price":2020,"cost":1300,"qty":0,"sku":"R100044","features":["4 secciones · mayor soporte","Funda impermeable","Espuma de soporte","Fácil de limpiar y desinfectar"],"swatch":{"name":"Azul","hex":"#1565c0"},"sizeLabel":null},{"id":"p185","name":"Cojin Movilizador Rotativo","brand":"Reactiv","cat":"Equipo hospitalario","img":"assets/opt/p185_Cojin_Movilizador_Rotativo.jpg","sizes":["NEGRO"],"tags":[],"desc":"Cojín de soporte que redistribuye la presión y mejora la comodidad al permanecer sentado por periodos prolongados.","price":620,"cost":400,"qty":1,"sku":"R100090","features":["Facilita giros del paciente en cama","Reduce el esfuerzo del cuidador","Redistribuye la presión","Cómodo y resistente"],"swatch":{"name":"Negro","hex":"#1c1c1c"},"sizeLabel":null},{"id":"p186","name":"Cojin Roho Mosaic","brand":"Reactiv","cat":"Equipo hospitalario","img":"assets/opt/p186_Cojin_Roho_Mosaic.jpg","sizes":["16x16”"],"tags":["nuevo"],"desc":"Cojín de soporte que redistribuye la presión y mejora la comodidad al permanecer sentado por periodos prolongados.","price":2480,"cost":1600,"qty":0,"sku":"R320050","features":["Cojín de aire tipo Roho","Celdas ajustables de aire","Máxima prevención de úlceras","Medida 16x16\""],"swatch":null,"sizeLabel":"16x16”"},{"id":"p189","name":"Portasueros Base Nylon","brand":"Superconfort","cat":"Equipo hospitalario","img":"assets/opt/p189_Portasueros_Base_Nylon.jpg","sizes":["5 Apoyos"],"tags":["adulto-mayor"],"desc":"Portasueros rodable con altura ajustable para la administración segura de soluciones intravenosas.","price":1040,"cost":670,"qty":0,"sku":"R100060","features":["Base de nylon con 5 ruedas","Altura ajustable","Ganchos para soluciones","Rodable y estable"],"swatch":null,"sizeLabel":"5 Apoyos"},{"id":"p191","name":"Portasueros Base Acero","brand":"Reactiv","cat":"Equipo hospitalario","img":"assets/opt/p191_Portasueros_Base_Acero.jpg","sizes":["4 Apoyos"],"tags":["adulto-mayor"],"desc":"Portasueros rodable con altura ajustable para la administración segura de soluciones intravenosas.","price":1010,"cost":650,"qty":0,"sku":"R100061","features":["Base de acero con 4 apoyos","Altura ajustable","Rodable","Estructura resistente"],"swatch":null,"sizeLabel":"4 Apoyos"},{"id":"p193","name":"Cama Manual Basica con Portasueros","brand":"Reactiv","cat":"Equipo hospitalario","img":"assets/opt/p193_Cama_Manual_Basica_con_Portasueros.jpg","sizes":["UN"],"tags":["adulto-mayor"],"desc":"Cama hospitalaria manual con manivelas para ajustar posición, incluye portasueros. Ideal para el cuidado del paciente en casa.","price":null,"cost":4670,"qty":0,"sku":"R217001","features":["Cama manual con manivelas","Posiciones ajustables","Incluye portasueros","Ideal para cuidado en casa"],"swatch":null,"sizeLabel":null},{"id":"p194","name":"Cama Eléctrica Serie 4000","brand":"Reactiv","cat":"Equipo hospitalario","img":"assets/opt/p194_Cama_Electrica_serie_4000.jpg","sizes":["UN"],"tags":[],"desc":"Cama hospitalaria con posiciones ajustables para el cuidado y la comodidad del paciente en casa o clínica.","price":null,"cost":10000,"qty":0,"sku":"R202031-G","features":["Cama eléctrica multiposición","Control remoto","Con barandales","Para casa o clínica"],"swatch":null,"sizeLabel":null},{"id":"n1","name":"Cama Eléctrica 5 Funciones con Barandales ABS","brand":"Reactiv","cat":"Camas","img":"assets/opt/n1_Cama_El_ctrica_5_Funciones_con_Barandale.jpg","sizes":[],"tags":[],"desc":"Cama hospitalaria ReActiv para el cuidado del paciente en casa o clínica. Posiciones ajustables para mayor comodidad y para facilitar la labor del cuidador. Consúltanos disponibilidad, medidas y precio.","price":null,"sku":"R224350-V","features":["5 funciones eléctricas","Barandales ABS abatibles","Control remoto","Cabecera y piecera desmontables"],"swatch":null,"sizeLabel":null},{"id":"n2","name":"Cama Eléctrica Serie 7000 (3 Funciones)","brand":"Reactiv","cat":"Camas","img":"assets/opt/n2_Cama_El_ctrica_Serie_7000_3_Funciones.jpg","sizes":[],"tags":[],"desc":"Cama hospitalaria ReActiv para el cuidado del paciente en casa o clínica. Posiciones ajustables para mayor comodidad y para facilitar la labor del cuidador. Consúltanos disponibilidad, medidas y precio.","price":null,"sku":"R224331-V","features":["3 funciones eléctricas","Cabecera y piecera ABS","Barandales abatibles","Ruedas con freno"],"swatch":null,"sizeLabel":null},{"id":"n3","name":"Cama Eléctrica 3 Funciones con Barandales ABS","brand":"Reactiv","cat":"Camas","img":"assets/opt/n3_Cama_El_ctrica_3_Funciones_con_Barandale.jpg","sizes":[],"tags":[],"desc":"Cama hospitalaria ReActiv para el cuidado del paciente en casa o clínica. Posiciones ajustables para mayor comodidad y para facilitar la labor del cuidador. Consúltanos disponibilidad, medidas y precio.","price":null,"sku":"R224330-V","features":["3 funciones eléctricas","Barandales ABS abatibles","Control remoto","Respaldo y piernas ajustables"],"swatch":null,"sizeLabel":null},{"id":"n4","name":"Cama Manual 3 Funciones con Barandales de Aluminio","brand":"Reactiv","cat":"Camas","img":"assets/opt/n4_Cama_Manual_3_Funciones_con_Barandales_d.jpg","sizes":[],"tags":[],"desc":"Cama hospitalaria ReActiv para el cuidado del paciente en casa o clínica. Posiciones ajustables para mayor comodidad y para facilitar la labor del cuidador. Consúltanos disponibilidad, medidas y precio.","price":null,"sku":"R224130-V","features":["3 funciones con manivelas","Barandales de aluminio abatibles","Respaldo, piernas y altura","Ruedas con freno"],"swatch":null,"sizeLabel":null},{"id":"n5","name":"Cama Manual 2 Funciones con Manivelas","brand":"Reactiv","cat":"Camas","img":"assets/opt/n5_Cama_Manual_2_Funciones_con_Manivelas.jpg","sizes":[],"tags":[],"desc":"Cama hospitalaria ReActiv para el cuidado del paciente en casa o clínica. Posiciones ajustables para mayor comodidad y para facilitar la labor del cuidador. Consúltanos disponibilidad, medidas y precio.","price":null,"sku":"R224120-V","features":["2 funciones con manivelas","Respaldo y piernas ajustables","Barandales abatibles","Ruedas con freno"],"swatch":null,"sizeLabel":null},{"id":"p252","name":"Barandal Portátil de Aluminio para Cama","brand":"Reactiv","cat":"Equipo hospitalario","img":"assets/opt/p252_Barandal_Port_til_de_Aluminio_para_Cama.jpg","sizes":["UN"],"tags":["adulto-mayor"],"desc":"Barandal de seguridad para cama que ayuda a prevenir caídas y facilita los cambios de posición.","price":780,"cost":498,"qty":1,"sku":"R225450","features":["Barandal de seguridad para cama","Aluminio resistente","Previene caídas","Apoyo para levantarse"],"swatch":null,"sizeLabel":null},{"id":"p311","name":"Colchon Seccionado Resistente Agua","brand":"Reactiv","cat":"Camas y colchones","img":"assets/opt/p311_Colchon_Seccionado_Resistente_Agua.jpg","sizes":[],"tags":["rehabilitacion"],"desc":"Colchón terapéutico que distribuye la presión y favorece el descanso, ayudando a prevenir úlceras por presión.","price":null,"sku":"R100041","features":["Colchón seccionado","Resistente al agua","Densidad 14","Para camas hospitalarias"],"swatch":null,"sizeLabel":null},{"id":"p312","name":"Colchon 4 Secciones Impermeable 90cm","brand":"Reactiv","cat":"Camas y colchones","img":"assets/opt/p312_Colchon_4_Secciones_Impermeable_90cm.jpg","sizes":[],"tags":["rehabilitacion"],"desc":"Colchón terapéutico que distribuye la presión y favorece el descanso, ayudando a prevenir úlceras por presión.","price":null,"sku":"R100043","features":["4 secciones · 90 cm","Funda impermeable","Densidad 17","Para camas hospitalarias"],"swatch":null,"sizeLabel":null},{"id":"p313","name":"Colchon 4 Secciones Espuma","brand":"Reactiv","cat":"Camas y colchones","img":"assets/opt/p313_Colchon_4_Secciones_Espuma.jpg","sizes":[],"tags":["rehabilitacion"],"desc":"Colchón terapéutico que distribuye la presión y favorece el descanso, ayudando a prevenir úlceras por presión.","price":null,"features":["4 secciones","Espuma de poliuretano","Soporte uniforme","Para camas hospitalarias"],"swatch":null,"sizeLabel":null,"sku":"R224001-G"},{"id":"p314","name":"Colchon 4 Secciones Espuma Alta Densidad","brand":"Reactiv","cat":"Camas y colchones","img":"assets/opt/p314_Colchon_4_Secciones_Espuma_Alta_Densidad.jpg","sizes":[],"tags":["rehabilitacion"],"desc":"Colchón terapéutico que distribuye la presión y favorece el descanso, ayudando a prevenir úlceras por presión.","price":null,"sku":"R224002-V","features":["4 secciones · alta densidad","Espuma de poliuretano","Mayor soporte y durabilidad","Para camas hospitalarias"],"swatch":null,"sizeLabel":null},{"id":"p315","name":"Colchon Presion Alterna AirSoft 5000","brand":"Reactiv","cat":"Camas y colchones","img":"assets/opt/p315_Colchon_Presion_Alterna_AirSoft_5000.jpg","sizes":[],"tags":["rehabilitacion","nuevo"],"desc":"Colchón terapéutico que distribuye la presión y favorece el descanso, ayudando a prevenir úlceras por presión.","price":null,"sku":"R351024","features":["Celdas tubulares de 5\"","Doble circuito (presión alterna)","Válvula RCP de emergencia","Bomba con regulador · hasta 120 kg"],"swatch":null,"sizeLabel":null},{"id":"p376","name":"Silla Cama Acompanante","brand":"Reactiv","cat":"Mobiliario hospitalario","img":"assets/opt/p376_Silla_Cama_Acompanante.jpg","sizes":[],"tags":[],"desc":"Mueble de descanso y acompañamiento diseñado para la comodidad del paciente y su familia.","price":null,"features":["Sillón convertible en cama","Para acompañante o paciente","Acolchado y reclinable","Estructura resistente"],"swatch":null,"sizeLabel":null,"sku":"R100202"},{"id":"p377","name":"Mesa Puente Bandeja Plastico","brand":"Reactiv","cat":"Mobiliario hospitalario","img":"assets/opt/p377_Mesa_Puente_Bandeja_Plastico.jpg","sizes":[],"tags":[],"desc":"Mesa puente con altura ajustable, práctica para comer, leer o trabajar desde la cama.","price":null,"sku":"R214051","features":["Base de acero en forma de H","4 ruedas giratorias con freno","Altura ajustable (telescópica)","Bandeja de plástico gris"],"swatch":null,"sizeLabel":null},{"id":"p378","name":"Mesa Puente Bandeja Inclinable","brand":"Reactiv","cat":"Mobiliario hospitalario","img":"assets/opt/p378_Mesa_Puente_Bandeja_Inclinable.jpg","sizes":[],"tags":[],"desc":"Mesa puente con altura ajustable, práctica para comer, leer o trabajar desde la cama.","price":null,"sku":"R214055","features":["Base de acero en forma de H","Bandeja reclinable (lectura/laptop)","4 ruedas giratorias con freno","Altura ajustable (telescópica)"],"swatch":null,"sizeLabel":null}]}]};
+</script>
 <script>
 (function(){
-  const D=window.COPILCO, $=s=>document.querySelector(s);
+  const D=window.BIOMED, $=s=>document.querySelector(s);
   const phone='529513024669';
   const esc=s=>(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const waLink=(txt)=>`https://wa.me/${phone}?text=${encodeURIComponent(txt)}`;
+  const money=n=>'$'+Number(n).toLocaleString('es-MX');
   window.__phErr=function(img){const ph=document.createElement('div');ph.className='ph';ph.textContent=img.alt||'Producto';img.replaceWith(ph);};
 
   // Acentos y correcciones de nombres para mostrar
   const FIX=[['Baston','Bastón'],['Comodo','Cómodo'],['Colchon','Colchón'],['Electrica','Eléctrica'],['Plastico','Plástico'],['Portatil','Portátil'],['Acompanante','Acompañante'],['Bano','Baño'],['Rijos','Fijos'],['Anatomico','Anatómico'],['Aleman','Alemán'],['Cojin','Cojín'],['Parlisis','Parálisis']];
   const norm=s=>{s=s||'';FIX.forEach(([a,b])=>{s=s.split(a).join(b);});return s;};
 
-  $('#cta-top').href=waLink('Hola BioMed Copilco, vi su catálogo en línea y quiero hacer un pedido.');
-  $('#cta-bottom').href=waLink('Hola BioMed Copilco, me interesa un producto de su catálogo.');
+  $('#cta-top').href=waLink('Hola BioMed, vi su catálogo en línea y quiero hacer un pedido.');
+  $('#cta-bottom').href=waLink('Hola BioMed, me interesa un producto de su catálogo.');
+  $('#fab').href=waLink('Hola BioMed, me interesa un producto de su catálogo.');
 
+  const orderMsg=(p)=>{
+    const nm=norm(p.name);
+    const col=p.swatch?` color ${p.swatch.name}`:'';
+    const sk=p.sku?` [${p.sku}]`:'';
+    const pr=p.price?` — Precio: ${money(p.price)}`:'';
+    const ask=p.price?'¿Me confirmas disponibilidad?':'¿Precio y disponibilidad?';
+    return `Hola BioMed, me interesa: ${nm}${col}${sk}${pr}. ${ask}`;
+  };
   const badge=(tags)=>{
+    tags=tags||[];
     if(tags.includes('mas-vendido'))return '<span class="badge top">Top ventas</span>';
     if(tags.includes('nuevo'))return '<span class="badge new">Nuevo</span>';
     if(tags.includes('recomendado'))return '<span class="badge rec">Recomendado</span>';
     return '';
   };
+  const priceHtml=(p)=> p.price
+    ? `<div class="price">${money(p.price)}<span class="iva">IVA incl.</span></div>`
+    : `<div class="price consult">Precio a consultar</div>`;
+
+  const colorRow=(p)=>{
+    if(p.variants && p.variants.length>1){
+      const sw=p.variants.map((v,i)=>`<button class="sw-btn${i===0?' on':''}" style="background:${esc(v.hex)}" title="${esc(v.color)}" onclick="window.__pickColor(event,'${p.id}',${i})"></button>`).join('');
+      return `<div class="colorrow"><span class="lbl">Color</span><span class="swatches">${sw}</span><span class="cname" data-cname="${p.id}">${esc(p.variants[0].color)}</span></div>`;
+    }
+    if(p.swatch) return `<div class="colorrow"><span class="lbl">Color</span><span class="sw" style="background:${esc(p.swatch.hex)}" title="${esc(p.swatch.name)}"></span><span class="lbl" style="text-transform:none;color:var(--slate);font-weight:600">${esc(p.swatch.name)}</span></div>`;
+    if(p.sizeLabel) return `<div class="colorrow"><span class="lbl">Medida</span><span class="sizechip">${esc(p.sizeLabel)}</span></div>`;
+    return '';
+  };
+  const featsHtml=(p)=> (p.features&&p.features.length)
+    ? `<ul class="feats">${p.features.map(f=>`<li>${esc(f)}</li>`).join('')}</ul>` : '';
+
   const card=(p)=>{
     const nm=norm(p.name);
     const media=p.img?`<img src="${esc(p.img)}" alt="${esc(nm)}" loading="lazy" referrerpolicy="no-referrer" onerror="window.__phErr(this)">`
       :`<div class="ph">${esc(nm)}</div>`;
-    const msg=`Hola BioMed Copilco, me interesa: ${nm}${p.brand?' ('+p.brand+')':''}. ¿Precio y disponibilidad?`;
     const expand='<span class="expand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>';
     return `<div class="card" data-id="${p.id}">
       <div class="m">${badge(p.tags)}${expand}${media}</div>
       <div class="b">
         <div class="nm">${esc(nm)}</div>
-        ${p.brand?`<div class="br">${esc(p.brand)}</div>`:''}
-        <div class="desc">${esc(norm(p.desc))}</div>
-        <a class="wa" target="_blank" rel="noopener" href="${waLink(msg)}" onclick="event.stopPropagation()">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm4.4 12c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 01-1.9-1.2 7.2 7.2 0 01-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.8A11.8 11.8 0 0013 17c.6.3 1.1.4 1.5.5a3.5 3.5 0 001.6.1c.5-.1 1.4-.6 1.6-1.1s.2-1 .1-1.1z"/></svg>
-          Pedir
-        </a>
+        ${p.sku?`<span class="sku">${esc(p.sku)}</span>`:''}
+        ${featsHtml(p)}
+        ${colorRow(p)}
+        <div class="pricewrap">
+          ${priceHtml(p)}
+          <a class="wa" target="_blank" rel="noopener" href="${waLink(orderMsg(p))}" onclick="event.stopPropagation()">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm4.4 12c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 01-1.9-1.2 7.2 7.2 0 01-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.8A11.8 11.8 0 0013 17c.6.3 1.1.4 1.5.5a3.5 3.5 0 001.6.1c.5-.1 1.4-.6 1.6-1.1s.2-1 .1-1.1z"/></svg>
+            Pedir
+          </a>
+        </div>
       </div>
     </div>`;
   };
 
-  const nav=$('#catnav'), groups=$('#groups');
-  nav.innerHTML=D.groups.map((g,i)=>`<a href="#g-${g.key}" class="${i===0?'on':''}" data-k="${g.key}">${esc(g.nombre)}</a>`).join('');
+  // ===== Filtros y secciones =====
+  const chipsEl=$('#chips'), groups=$('#groups');
+  const chipDefs=[{k:'all',label:'Todos'}].concat(D.groups.map(g=>({k:g.key,label:g.nombre})));
+  chipsEl.innerHTML=chipDefs.map((c,i)=>`<button class="chip ${i===0?'on':''}" data-k="${c.k}">${esc(c.label)}</button>`).join('');
+
   groups.innerHTML=D.groups.map(g=>`
-    <section class="group" id="g-${g.key}">
+    <section class="group" data-k="${g.key}" id="g-${g.key}">
       <div class="g-head">
         <span class="g-kick"><span class="bar"></span>${esc(g.nombre)}</span>
         <h2>${esc(g.nombre)}</h2>
         <div class="sub">${esc(g.sub)}</div>
-        <span class="g-count">${g.items.length} modelos</span>
+        <span class="g-count">${g.items.length} ${g.items.length===1?'modelo':'modelos'}</span>
       </div>
-      <div class="grid2">${g.items.map(card).join('')}</div>
+      <div class="grid">${g.items.map(card).join('')}</div>
     </section>`).join('');
 
-  // sticky nav active state
-  const links=[...nav.querySelectorAll('a')];
-  const obs=new IntersectionObserver((es)=>{
-    es.forEach(e=>{ if(e.isIntersecting){
-      const k=e.target.id.replace('g-','');
-      links.forEach(a=>a.classList.toggle('on',a.dataset.k===k));
-    }});
-  },{rootMargin:'-45% 0px -50% 0px'});
-  D.groups.forEach(g=>obs.observe(document.getElementById('g-'+g.key)));
+  function setFilter(k){
+    chipsEl.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c.dataset.k===k));
+    groups.querySelectorAll('.group').forEach(s=>s.classList.toggle('hidden', k!=='all' && s.dataset.k!==k));
+    window.scrollTo({top:0,behavior:'instant'in document.documentElement.style?'instant':'auto'});
+  }
+  chipsEl.addEventListener('click',e=>{ const c=e.target.closest('.chip'); if(c)setFilter(c.dataset.k); });
 
-  // ===== Modal de detalle (imagen grande + características) =====
+  // ===== Modal de detalle =====
   const PMAP={}; D.groups.forEach(g=>g.items.forEach(p=>PMAP[p.id]=p));
+
+  // cambiar color (tarjeta y modal): actualiza imagen, SKU y enlace de WhatsApp
+  function applyVariant(p,i){ const v=p.variants[i]; if(!v) return null; p.sku=v.sku; p.img=v.img; p.swatch={name:v.color,hex:v.hex}; return v; }
+  window.__pickColor=function(e,pid,i){
+    e.stopPropagation();
+    const p=PMAP[pid]; if(!p||!p.variants) return;
+    const v=applyVariant(p,i); if(!v) return;
+    const card=document.querySelector('.card[data-id="'+pid+'"]');
+    if(card){
+      const img=card.querySelector('.m img'); if(img) img.src=v.img;
+      const sk=card.querySelector('.sku'); if(sk) sk.textContent=v.sku;
+      const cn=card.querySelector('[data-cname="'+pid+'"]'); if(cn) cn.textContent=v.color;
+      card.querySelectorAll('.sw-btn').forEach((b,bi)=>b.classList.toggle('on',bi===i));
+      const wa=card.querySelector('.wa'); if(wa) wa.href=waLink(orderMsg(p));
+    }
+  };
+  window.__pickColorModal=function(e,pid,i){
+    e.stopPropagation();
+    const p=PMAP[pid]; if(!p||!p.variants) return;
+    const v=applyVariant(p,i); if(!v) return;
+    const hero=document.querySelector('#m-hero-img'); if(hero) hero.src=v.img;
+    const sku=document.querySelector('#m-sku'); if(sku) sku.textContent=v.sku;
+    const cn=document.querySelector('#m-cname'); if(cn) cn.textContent=v.color;
+    const wa=document.querySelector('#m-wa'); if(wa) wa.href=waLink(orderMsg(p));
+    document.querySelectorAll('.m-sw-btn').forEach((b,bi)=>b.classList.toggle('on',bi===i));
+    // mantener sincronizada la tarjeta detrás del modal
+    const card=document.querySelector('.card[data-id="'+pid+'"]');
+    if(card){
+      const cimg=card.querySelector('.m img'); if(cimg) cimg.src=v.img;
+      const csk=card.querySelector('.sku'); if(csk) csk.textContent=v.sku;
+      const ccn=card.querySelector('[data-cname="'+pid+'"]'); if(ccn) ccn.textContent=v.color;
+      card.querySelectorAll('.sw-btn').forEach((b,bi)=>b.classList.toggle('on',bi===i));
+      const cwa=card.querySelector('.wa'); if(cwa) cwa.href=waLink(orderMsg(p));
+    }
+  };
+
   const modal=$('#modal'), mc=$('#modal-content');
   const waSvg='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1112 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 01-1.9-1.2 7.2 7.2 0 01-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.8A11.8 11.8 0 0013 17c.6.3 1.1.4 1.5.5a3.5 3.5 0 001.6.1c.5-.1 1.4-.6 1.6-1.1s.2-1 .1-1.1-.2-.2-.4-.3z"/></svg>';
   function openModal(id){
     const p=PMAP[id]; if(!p)return;
     const nm=norm(p.name);
-    const media=p.img?`<img src="${esc(p.img)}" alt="${esc(nm)}" referrerpolicy="no-referrer" onerror="window.__phErr(this)">`:`<div class="ph">${esc(nm)}</div>`;
-    const msg=`Hola BioMed Copilco, me interesa: ${nm}${p.brand?' ('+p.brand+')':''}. ¿Precio y disponibilidad?`;
-    const sizes=(p.sizes&&p.sizes.length)?`<div class="modal-sec">Opciones disponibles</div><div class="sizes">${p.sizes.map(s=>`<span class="s">${esc(s)}</span>`).join('')}</div>`:'';
+    const media=p.img?`<img id="m-hero-img" src="${esc(p.img)}" alt="${esc(nm)}" referrerpolicy="no-referrer" onerror="window.__phErr(this)">`:`<div class="ph">${esc(nm)}</div>`;
+    const feats=(p.features&&p.features.length)?`<div class="modal-sec">Características</div><ul class="m-feats">${p.features.map(f=>`<li>${esc(f)}</li>`).join('')}</ul>`:'';
+    let colorSec='';
+    if(p.variants && p.variants.length>1){
+      const sw=p.variants.map((v,i)=>`<button class="m-sw-btn${v.sku===p.sku?' on':''}" style="background:${esc(v.hex)}" title="${esc(v.color)}" onclick="window.__pickColorModal(event,'${p.id}',${i})"></button>`).join('');
+      colorSec=`<div class="modal-sec">Color · <span id="m-cname">${esc(p.swatch?p.swatch.name:'')}</span></div><div class="m-swatches">${sw}</div>`;
+    } else if(p.swatch){
+      colorSec=`<div class="modal-sec">Color disponible</div><div class="sizes"><span class="s"><span class="m-sw" style="background:${esc(p.swatch.hex)}"></span>${esc(p.swatch.name)}</span></div>`;
+    } else if(p.sizeLabel){
+      colorSec=`<div class="modal-sec">Medida disponible</div><div class="sizes"><span class="s">${esc(p.sizeLabel)}</span></div>`;
+    }
+    const priceBlock=p.price
+      ? `<div class="modal-price"><span class="val">${money(p.price)}</span><span class="iva">IVA incluido</span></div>`
+      : `<div class="modal-price consult"><span class="val">Precio a consultar</span></div>`;
+    const skuLine=p.sku?`<div class="br">${esc(p.brand||'Reactiv')} · <span id="m-sku" style="font-family:'Courier New',monospace">${esc(p.sku)}</span></div>`:(p.brand?`<div class="br">${esc(p.brand)}</div>`:'');
     mc.innerHTML=`
       <div class="modal-hero">${badge(p.tags)}${media}</div>
       <div class="modal-b">
-        ${p.brand?`<div class="br">${esc(p.brand)}</div>`:''}
+        ${skuLine}
         <h3>${esc(nm)}</h3>
-        <div class="modal-sec">Características</div>
+        ${priceBlock}
+        ${feats}
+        <div class="modal-sec">Descripción</div>
         <div class="desc">${esc(norm(p.desc)||'Consúltanos los detalles de este producto por WhatsApp.')}</div>
-        ${sizes}
-        <a class="modal-wa" target="_blank" rel="noopener" href="${waLink(msg)}">${waSvg}Pedir por WhatsApp</a>
+        ${colorSec}
+        <a class="modal-wa" id="m-wa" target="_blank" rel="noopener" href="${waLink(orderMsg(p))}">${waSvg}Pedir por WhatsApp</a>
       </div>`;
     modal.classList.add('open'); document.body.style.overflow='hidden'; mc.parentElement.scrollTop=0;
   }

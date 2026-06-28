@@ -1,0 +1,16 @@
+uploads/
+data/
+export/
+screenshots/
+.DS_Store
+.thumbnail
+assets/products/
+assets/app.js
+assets/biomed-catalog-data.js
+assets/catalog-data.js
+assets/catalog.css
+assets/copilco-data.js
+assets/guide-data.js
+assets/guide.css
+assets/guide.js
+assets/remote-images.js
